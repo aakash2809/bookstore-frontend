@@ -3,7 +3,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import HelleoWorld from '@/components/HelloWorld';
 import Login from '@/pages/Login';
-import Registration from '@/pages/Registration';
+import Registration from '@/pages/Register';
+import RegistrationOrLogin from '@/pages/RegistrationOrLogin';
 
 Vue.use(Router);
 
@@ -21,6 +22,11 @@ export default new Router({
 		path: '/register',
 		name: Registration,
 		component: Registration
+	},
+	{
+		path: '/registrationOrLogin',
+		name: RegistrationOrLogin,
+		component: RegistrationOrLogin
 	}
 	],
 	mode: 'history'
