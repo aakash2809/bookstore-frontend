@@ -5,6 +5,7 @@ import HelleoWorld from '@/components/HelloWorld';
 import Login from '@/pages/Login';
 import Registration from '@/pages/Register';
 import RegistrationOrLogin from '@/pages/RegistrationOrLogin';
+import DashBoard from '@/pages/DashBoard';
 
 Vue.use(Router);
 
@@ -27,6 +28,11 @@ export default new Router({
 		path: '/registrationOrLogin',
 		name: RegistrationOrLogin,
 		component: RegistrationOrLogin
+	},
+	{
+		path: '/dashBoard',
+		name: DashBoard,
+		component: DashBoard
 	}
 	],
 	mode: 'history'
