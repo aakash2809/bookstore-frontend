@@ -52,11 +52,13 @@
       v-model="form.cpassword"
     ></v-text-field>
     <button x-large block class="button">SignUp</button>
+    <SnackbarNotify ref="snackbar" />
   </v-form>
 </template>
 
 <script>
 import userServices from "../services/user";
+import SnackbarNotify from "../components/SnackBarNotify";
 
 export default {
   data: () => ({
@@ -71,6 +73,10 @@ export default {
     showCPassword: false,
     sending: false,
   }),
+
+  components: {
+    SnackbarNotify,
+  },
 
   methods: {
     clearForm() {
@@ -97,25 +103,27 @@ export default {
       userServices
         .registerUser(data)
         .then((res) => {
-          console.log("resiponse", res);
-          this.clearForm();
+          console.log("resiponse", `${res.data.message}`);
+          if (res.data.success) {
+            this.$refs.snackbar._data.text = `${res.data.message}`;
+            this.$refs.snackbar._data.show = true;
+            this.clearForm(res.data.success);
+          } else {
+            this.$refs.snackbar._data.text = `${res.data.message}`;
+            this.$refs.snackbar._data.show = true;
+            this.clearForm(res.data.success);
+          }
         })
         .catch((error) => {
+          this.$refs.snackbar._data.text = `internal server error`;
+          this.$refs.snackbar._data.show = true;
           console.log("resiponse", error);
           this.clearForm();
-          console.log(error);
         });
     },
   },
 };
 </script>
 <style scoped>
-.button {
-  background: brown 0% 0% no-repeat padding-box;
-  width: 352px;
-  height: 37px;
-  left: 727px;
-  color: white;
-  font-size: 18px;
-}
+@import url("../scss/register.scss");
 </style>
