@@ -4,7 +4,11 @@
       <v-row>
         <v-app-bar color="#A03037" class="main-bar" fixed elevation="1">
           <div class="book-icon">
-            <v-img class="mx-2 book-icon" contain></v-img>
+            <v-img
+              class="mx-2 book-icon"
+              contain
+              :src="require('../assets/images/education.svg')"
+            ></v-img>
           </div>
           <v-card-title class="white--text headline"> BookStore </v-card-title>
           <div id="top-search-bar">
@@ -27,18 +31,16 @@
             max-height="25"
             max-width="25"
             contain
+            :src="require('../assets/images/supermarket.svg')"
           ></v-img>
-          <div class="phone-viewport">
-            <md-bottom-bar class="md-accent" md-sync-route>
-              <md-bottom-bar-item
-                to="/components/bottom-bar/posts/1"
-                md-label="Post 1"
-                md-icon="/assets/icon-whatshot.svg"
-              ></md-bottom-bar-item>
-            </md-bottom-bar>
-          </div>
         </v-app-bar>
       </v-row>
     </v-card>
   </div>
 </template>
+<script>
+export default {};
+</script>
+<style scoped>
+@import url("../scss/appBar.scss");
+</style>
