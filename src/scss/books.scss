@@ -1,0 +1,56 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.book-layout {
+    margin-top: 120px;
+    margin-left: 140px;
+}
+.b-card {
+    width: 200px;
+    word-break: break-word;
+}
+
+.b-card .row {
+    display: grid;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+}
+.book-image .v-image {
+    height: 120px;
+    width: 80px;
+    background-color: $faintGrey;
+}
+.book-image {
+    background-color: rgb(228, 225, 225)
+}
+
+.book-content .v-list-item {
+    min-height: 25px !important;
+}
+.book-title {
+
+    font-size: 15px;
+    font-weight:55px;
+   
+width: 130px;
+height: 19px;
+text-align: left;
+font: normal normal normal 14px/19px Roboto;
+letter-spacing: 0px;
+}
+.book-author {
+    font-size: 12px;
+    color:grey !important;
+    font-weight: 500px;
+}
+.book-price {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.flex.md3 {
+  margin-left: 63px;
+  margin-right: -40px;
+}
