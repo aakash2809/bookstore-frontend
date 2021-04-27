@@ -1,11 +1,12 @@
 <template>
-  <v-form @submit.prevent="login">
+  <v-form ref="form" @submit.prevent="validate" lazy-validation>
     <br />
     <br />
     <v-text-field
       outlined
       dense
       label="E-mail"
+      :rules="[emailRules.required, emailRules.email_validation]"
       required
       autocomplete="off"
       v-model="form.email"
@@ -14,6 +15,7 @@
       outlined
       dense
       label="password"
+      :rules="[passwordRules.required, passwordRules.minLength]"
       v-model="form.password"
       :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
       @click:append="() => (showPassword = !showPassword)"
@@ -25,15 +27,15 @@
     <SnackbarNotify ref="snackbar" />
   </v-form>
 </template>
+
 <script>
 import userServices from "../services/user";
 import router from "../router";
 import SnackbarNotify from "../components/SnackBarNotify";
-import { validationMixin } from "vuelidate";
-import { required, email, minLength } from "vuelidate/lib/validators";
+
 export default {
   name: "Login",
-  mixins: [validationMixin],
+
   data: () => ({
     form: {
       email: null,
@@ -41,28 +43,29 @@ export default {
     },
     showPassword: false,
     sending: false,
+
+    emailRules: {
+      required: (v) => !!v || "E-mail is required",
+      email_validation: (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
+    },
+    passwordRules: {
+      required: (v) => !!v || "Name is required",
+      minLength: (v) => (v && v.length > 7) || "password must be 8 characters",
+    },
   }),
   components: {
     SnackbarNotify,
   },
 
-  validations: {
-    form: {
-      email: {
-        required,
-        email,
-      },
-      password: {
-        required,
-        minLength: minLength(8),
-      },
-    },
-  },
-
   methods: {
+    validate() {
+      if (this.$refs.form.validate()) {
+        this.login();
+      }
+    },
+
     clearForm(redirectKey) {
-      this.form.email = null;
-      this.form.password = null;
+      this.$refs.form.reset();
       if (redirectKey) {
         router.push({
           path: "/dashBoard",
@@ -87,8 +90,6 @@ export default {
             localStorage.setItem("email", res.data.user[0].email);
             this.$refs.snackbar._data.text = `${res.data.message}`;
             this.$refs.snackbar._data.show = true;
-            console.log(`response ${res.data.message}`);
-            console.log("snack bar  ", this.$refs.snackbar._data.text);
 
             this.clearForm(res.data.success);
           } else {

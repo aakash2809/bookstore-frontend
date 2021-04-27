@@ -1,5 +1,5 @@
 <template>
-  <v-form @submit.prevent="saveUser">
+  <v-form @submit.prevent="validate">
     <br />
     <v-text-field
       outlined
@@ -7,8 +7,8 @@
       id="first-name"
       v-model="form.firstName"
       label="firstName"
-      required
       autocomplete="off"
+      :rules="[nameRules.required, nameRules.name_length]"
     ></v-text-field>
     <v-text-field
       outlined
@@ -18,15 +18,16 @@
       label="lastName"
       required
       autocomplete="off"
+      :rules="[nameRules.required, nameRules.name_length]"
     ></v-text-field>
     <v-text-field
       outlined
       dense
       label="E-mail"
-      required
       id="email"
       v-model="form.email"
       autocomplete="off"
+      :rules="[emailRules.required, emailRules.email_validation]"
     ></v-text-field>
 
     <v-text-field
@@ -38,7 +39,7 @@
       id="password"
       v-model="form.password"
       label="password"
-      required
+      :rules="[passwordRules.required, passwordRules.minLength]"
     ></v-text-field>
     <v-text-field
       outlined
@@ -47,9 +48,9 @@
       :append-icon="showCPassword ? 'mdi-eye' : 'mdi-eye-off'"
       @click:append="() => (showCPassword = !showCPassword)"
       :type="showCPassword ? 'text' : 'password'"
-      required
       id="cpassword"
       v-model="form.cpassword"
+      :rules="[passwordRules.required, passwordRules.minLength]"
     ></v-text-field>
     <button x-large block class="button">SignUp</button>
     <SnackbarNotify ref="snackbar" />
@@ -72,6 +73,20 @@ export default {
     showPassword: false,
     showCPassword: false,
     sending: false,
+
+    nameRules: {
+      required: (v) => !!v || "field is required",
+      name_length: (v) =>
+        (v && v.length <= 10) || "field must be less than 10 characters",
+    },
+    emailRules: {
+      required: (v) => !!v || "E-mail is required",
+      email_validation: (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
+    },
+    passwordRules: {
+      required: (v) => !!v || "Name is required",
+      minLength: (v) => (v && v.length > 7) || "password must be 8 characters",
+    },
   }),
 
   components: {
@@ -79,13 +94,13 @@ export default {
   },
 
   methods: {
+    validate() {
+      if (this.$refs.form.validate()) {
+        this.saveUser();
+      }
+    },
     clearForm() {
-      this.$v.$reset();
-      this.form.firstName = null;
-      this.form.lastName = null;
-      this.form.email = null;
-      this.form.password = null;
-      this.form.cpassword = null;
+      this.$refs.form.reset();
     },
 
     saveUser() {
@@ -107,11 +122,11 @@ export default {
           if (res.data.success) {
             this.$refs.snackbar._data.text = `${res.data.message}`;
             this.$refs.snackbar._data.show = true;
-            this.clearForm(res.data.success);
+            this.clearForm();
           } else {
             this.$refs.snackbar._data.text = `${res.data.message}`;
             this.$refs.snackbar._data.show = true;
-            this.clearForm(res.data.success);
+            this.clearForm();
           }
         })
         .catch((error) => {
