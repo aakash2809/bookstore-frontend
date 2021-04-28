@@ -1,8 +1,10 @@
+@import "./variable.scss";
+
 .button {
-    background: brown 0% 0% no-repeat padding-box;
+    background:$brown 0% 0% no-repeat padding-box;
     width: 352px;
     height: 37px;
     left: 727px;
-    color: white;
+    color:$white;
     font-size: 18px;
   }

@@ -118,5 +118,5 @@ export default {
 </script>
 
 <style scoped>
-@import url("../scss/registerOrLogin.scss");
+@import "../scss/login.scss";
 </style>

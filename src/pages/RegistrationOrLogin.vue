@@ -35,6 +35,7 @@
 <script>
 import SignUp from "./Register";
 import Login from "./Login";
+
 export default {
   components: {
     SignUp,
@@ -42,64 +43,6 @@ export default {
   },
 };
 </script>
-<style scoped>
-body {
-  background-color: black;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.v-card__title {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.0125em;
-  line-height: 1rem;
-  margin-left: -7px;
-}
-.display-card {
-  top: 0px;
-  left: 0px;
-  height: 102%;
-  background-color: #878787;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-}
-
-.main-card {
-  top: 100px;
-  right: 260px;
-  width: 389px;
-  height: 475px;
-}
-
-.shopping-card {
-  top: 167px;
-  left: 170px;
-  width: 400px;
-  height: 415px;
-}
-
-.book-image1 {
-  height: 220px;
-  width: 180px;
-  margin-top: 30px;
-  margin-left: 40px;
-  justify-self: center;
-}
-.button {
-  background: brown 0% 0% no-repeat padding-box;
-  width: 352px;
-  height: 37px;
-  left: 727px;
-  color: white;
-  font-size: 18px;
-}
+<style lang ="scss" scoped>
+@import "../scss/registerOrLogin.scss";
 </style>

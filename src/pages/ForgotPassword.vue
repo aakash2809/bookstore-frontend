@@ -31,6 +31,6 @@ export default {
 };
 </script>
 
-<style scoped>
-@import url("../scss/forgotPassword.scss");
+<style lang= "scss" scoped>
+@import "../scss/forgotPassword.scss";
 </style>

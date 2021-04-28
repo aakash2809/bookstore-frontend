@@ -16,9 +16,11 @@
     </v-card>
   </div>
 </template>
+
 <script>
 export default {};
 </script>
-<style scoped>
-@import url("../scss/appBar.scss");
+
+<style lang = "scss" scoped>
+@import "../scss/appBar.scss";
 </style>

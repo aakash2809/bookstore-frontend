@@ -139,5 +139,5 @@ export default {
 };
 </script>
 <style lang = "scss" scoped>
-@import url("../scss/register.scss");
+@import "../scss/register.scss";
 </style>

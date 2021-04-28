@@ -96,6 +96,6 @@ export default {
 };
 </script>
 
-<style scoped>
-@import url("../scss/forgotPasswordForm.scss");
+<style lang = "scss" scoped>
+@import "../scss/forgotPasswordForm.scss";
 </style>
