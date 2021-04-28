@@ -9,6 +9,15 @@ export default {
     loginUser(loginCredentials) {
         return axios.post("/userLogin", loginCredentials);
     },
+
+    fetchAllBooks() {
+        return axios.get("/books");
+    },
+
+    forgotPassword(email) {
+        console.log("method called");
+        return axios.post("/forgotPassword", email);
+    }
 }
 
 
