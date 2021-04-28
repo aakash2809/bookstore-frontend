@@ -22,7 +22,15 @@
       :type="showPassword ? 'text' : 'password'"
       required
     ></v-text-field>
-    <br />
+    <span>
+      <router-link
+        to="/forgotPassword"
+        class="route-link1"
+        id="move-to-forgotPassword"
+        >forgot password ?</router-link
+      >
+    </span>
+    <br /><br />
     <button x-large block class="button">Login</button>
     <SnackbarNotify ref="snackbar" />
   </v-form>
