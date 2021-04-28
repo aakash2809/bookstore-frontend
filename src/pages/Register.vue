@@ -29,7 +29,6 @@
       autocomplete="off"
       :rules="[emailRules.required, emailRules.email_validation]"
     ></v-text-field>
-
     <v-text-field
       outlined
       dense
@@ -70,6 +69,7 @@ export default {
       password: null,
       cpassword: null,
     },
+
     showPassword: false,
     showCPassword: false,
     sending: false,
@@ -79,10 +79,12 @@ export default {
       name_length: (v) =>
         (v && v.length <= 10) || "field must be less than 10 characters",
     },
+
     emailRules: {
       required: (v) => !!v || "E-mail is required",
       email_validation: (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
     },
+
     passwordRules: {
       required: (v) => !!v || "Name is required",
       minLength: (v) => (v && v.length > 7) || "password must be 8 characters",
@@ -99,6 +101,7 @@ export default {
         this.saveUser();
       }
     },
+
     clearForm() {
       this.$refs.form.reset();
     },
@@ -113,12 +116,9 @@ export default {
         confirmPassword: this.form.cpassword,
       };
 
-      console.log("signup details: ", data);
-
       userServices
         .registerUser(data)
         .then((res) => {
-          console.log("resiponse", `${res.data.message}`);
           if (res.data.success) {
             this.$refs.snackbar._data.text = `${res.data.message}`;
             this.$refs.snackbar._data.show = true;
@@ -129,16 +129,15 @@ export default {
             this.clearForm();
           }
         })
-        .catch((error) => {
+        .catch(() => {
           this.$refs.snackbar._data.text = `internal server error`;
           this.$refs.snackbar._data.show = true;
-          console.log("resiponse", error);
           this.clearForm();
         });
     },
   },
 };
 </script>
-<style scoped>
+<style lang = "scss" scoped>
 @import url("../scss/register.scss");
 </style>

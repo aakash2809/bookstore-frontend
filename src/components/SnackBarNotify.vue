@@ -8,8 +8,11 @@
     </v-snackbar>
   </div>
 </template>
+
 <script>
 export default {
+  name: "SnackBar",
+
   data() {
     return {
       show: false,
