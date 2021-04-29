@@ -6,6 +6,7 @@
       outlined
       dense
       label="E-mail"
+      id="email"
       :rules="[emailRules.required, emailRules.email_validation]"
       required
       autocomplete="off"
@@ -14,6 +15,7 @@
     <v-text-field
       outlined
       dense
+      id="password"
       label="password"
       :rules="[passwordRules.required, passwordRules.minLength]"
       v-model="form.password"

@@ -10,6 +10,7 @@
     <v-text-field
       outlined
       dense
+      id="email"
       label="E-mail"
       :rules="[emailRules.required, emailRules.email_validation]"
       autocomplete="off"
