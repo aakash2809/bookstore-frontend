@@ -4,6 +4,7 @@ import RegistrationOrLogin from '@/pages/RegistrationOrLogin';
 import DashBoard from '@/pages/DashBoard';
 import ForgotPassword from '@/pages/ForgotPassword';
 import ForgotPasswordForm from '@/components/ForgotPasswordForm';
+import BookDetail from '@/pages/BookDetail';
 
 Vue.use(Router);
 
@@ -28,6 +29,11 @@ export default new Router({
 			path: '/forgotPasswordForm',
 			name: ForgotPasswordForm,
 			component: ForgotPasswordForm
+		},
+		{
+			path: '/BookDetail',
+			name: BookDetail,
+			component: BookDetail
 		}
 	],
 	mode: 'history'
