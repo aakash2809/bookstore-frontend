@@ -13,9 +13,11 @@
 
 <script>
 import Appbar from "../components/AppBar";
-import Books from "../components/books";
+import Books from "../components/AllBooks";
+
 export default {
-  name: "SnackBar",
+  name: "DashBoard",
+
   components: {
     Appbar,
     Books,
