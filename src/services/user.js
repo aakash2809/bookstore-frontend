@@ -15,8 +15,11 @@ export default {
     },
 
     forgotPassword(email) {
-        console.log("method called");
         return axios.post("/forgotPassword", email);
+    },
+
+    addToBag(bookId) {
+        return axios.put(`/book/addtobag/${bookId}`);
     }
 }
 
