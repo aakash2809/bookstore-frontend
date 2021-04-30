@@ -1,0 +1,103 @@
+@import "./variable.scss";
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.book-wishlist-card {
+    height: 311px;
+    width: 251px;
+    margin-top: 0px;
+    color: rgb(167, 171, 172);
+}
+
+.book-item-image {
+
+    height: 282px;
+    width: 191px;
+}
+
+.book-details .v-list-item {
+    min-height: 20px !important;
+}
+
+.flex.md3 {
+  margin-left: 63px;
+  margin-right: -40px;
+}
+
+#break {
+    margin-bottom: 12px;
+}
+.add-to-bag {
+    color: $white !important;
+    background-color: #A03037 !important;
+    width: 120px !important;
+    margin-left: 220px; 
+  }
+
+  .display-layout {
+    font-size: 17px;
+    margin-top: 100px !important;
+   
+}
+.divider {
+    width: 605px;
+}
+
+.book-route-links {
+    font-size: 13px;
+    margin-bottom: 5px !important;
+    margin-left: 100px;
+   
+}
+
+.add-bag-book-title {
+    font-size: 20px;
+    font-weight: inherit;
+}
+.add-bag-book-price {
+    font-size: 23px;;
+    font-weight: bold;
+}
+
+.full-layout {
+    max-height: 200% !important
+}
+.add-bag-book-author {
+    font-size: 12px;
+    color: $darkGrey !important;
+}
+
+.feedback-submit-button {
+    color: white !important;
+    background-color: rgb(52, 112, 224)!important;
+    width: 110px !important;
+    margin-left: 25px;
+  }
+  .feedback-card{
+    width: 605px;
+    height: 110px;
+    border: 5px solid black;
+
+    background: $faintGrey 0% 0% no-repeat padding-box;
+
+}
+.cust-feedback .theme--light.v-card {
+    background-color: rgba(235, 230, 230, 0.877);
+}
+.wish-list-btn {
+    color: $white !important;
+    background-color: #363535 !important;
+    width: 135px !important;
+    margin-left: 32px;
+  }
+
+  .description {
+      margin-right: 60px;
+      font-size: 13px;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+}
