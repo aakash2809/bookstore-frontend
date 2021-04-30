@@ -21,11 +21,15 @@
               solo
             ></v-text-field>
           </div>
-          <div class="avatar">
-            <v-icon class="white--text mr-8 account-icon"
-              >mdi-account-outline</v-icon
-            >
-          </div>
+          <ul>
+            <div class="avatar">
+              <v-icon class="white--text mr-8 account-icon"
+                >mdi-account-outline</v-icon
+              >
+              <p id="bottom-name">Aakash</p>
+            </div>
+          </ul>
+
           <v-img
             class="mx-2 supermarket-icon white--text headline"
             max-height="25"
