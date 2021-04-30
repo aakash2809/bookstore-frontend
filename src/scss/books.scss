@@ -1,10 +1,14 @@
+@import "./variable.scss";
+
 *{
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .book-layout {
-    margin-top: 120px;
+   
     margin-left: 140px;
+  margin-bottom: 40px;
+
 }
 .b-card {
     width: 200px;
@@ -31,14 +35,17 @@
 }
 .book-title {
 
-    font-size: 15px;
-    font-weight:55px;
-   
+font-size: 15px;
+font-weight:55px;
 width: 130px;
 height: 19px;
 text-align: left;
-font: normal normal normal 14px/19px Roboto;
+font: normal normal normal 14px/19px ;
 letter-spacing: 0px;
+text-decoration: none;
+text-decoration-line: none;
+border-bottom: none;
+border: 0;
 }
 .book-author {
     font-size: 12px;
@@ -54,3 +61,38 @@ letter-spacing: 0px;
   margin-left: 63px;
   margin-right: -40px;
 }
+
+.books-title {
+    margin-top: 120px;
+    margin-left: 80px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.books-title-quantity {
+    margin-top: 127px;
+ 
+    font-size: 13px;
+    margin-left: 9px;
+
+}
+
+.book-size {
+    height: 102%;
+    background-color: white; 
+}
+.router-link {
+    text-decoration: none;
+}
+.pagination {
+    list-style-type: none;
+  }
+  
+  .li {
+    display: inline-block;
+  }
+  
+  .active {
+    background-color: #4AAE9B;
+    color: #ffffff;
+  }
