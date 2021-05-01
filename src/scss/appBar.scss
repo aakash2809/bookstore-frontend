@@ -1,12 +1,14 @@
+@import "./variable.scss";
+
 .supermarket-icon {
-    margin-left: 50px;
+    margin-left: 40px;
     margin-top: -2px;
 
 }
 .title {
     font-size: 14px;
     font-weight: 15px;
-   color: white;
+   color:$white;
    padding-left:-25px;
 }
 .avatar {
@@ -20,7 +22,7 @@
     width: 600px;
 }
 .main-bar {
-    color: brown;
+    color: $brown;
 }
 
 .book-icon {  
@@ -32,4 +34,10 @@
 
 .white {
     font-variant: normal;
+}
+#bottom-name{
+    color:$white}
+
+#bottom-name-cart{
+    color:$white
 }

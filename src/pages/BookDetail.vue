@@ -99,7 +99,7 @@
       </v-col>
 
       <Snackbar ref="snackbar" />
-      <!--  <MyCart v-show="false" ref="myCart" /> -->
+      <MyCart v-show="false" ref="myCart" />
       <Books v-show="false" ref="books" />
     </v-content>
   </v-app>
@@ -108,7 +108,7 @@
 <script >
 import AppBar from "../components/AppBar";
 import Books from "../components/AllBooks";
-//import MyCart from "./myCart.vue";
+import MyCart from "./Mycart";
 import Snackbar from "../components/SnackBarNotify";
 import user from "../services/user";
 
@@ -129,7 +129,7 @@ export default {
 
   components: {
     AppBar,
-    //MyCart,
+    MyCart,
     Snackbar,
     Books,
   },
@@ -153,13 +153,10 @@ export default {
                 this.addToBagText = "ADDED TO BAG";
               }, 1000);
 
-              //this.$refs.books.displayAllBooks();
-              console.log(`response ${res.message}`);
-              console.log(`snackbar text ${this.$refs.snackbar._data.text}`);
-              console.log(`snackbar show ${this.$refs.snackbar._data.show}`);
+              console.log(this.$refs.myCart);
               this.$refs.snackbar._data.text = `${res.message}`;
               this.$refs.snackbar._data.show = true;
-              //   this.$refs.myCart.displayAllBooks();
+              this.$refs.myCart.displayAllBooks();
             })
             .catch(() => {
               this.$refs.snackbar._data.text = `internal server error`;
