@@ -5,6 +5,9 @@ import DashBoard from '@/pages/DashBoard';
 import ForgotPassword from '@/pages/ForgotPassword';
 import ForgotPasswordForm from '@/components/ForgotPasswordForm';
 import BookDetail from '@/pages/BookDetail';
+import Mycart from '@/pages/Mycart';
+import ConfirmOrder from '@/pages/ConfirmOrder';
+import AddressDetails from '@/components/AddressDetails';
 
 Vue.use(Router);
 
@@ -31,9 +34,24 @@ export default new Router({
 			component: ForgotPasswordForm
 		},
 		{
-			path: '/BookDetail',
+			path: '/bookDetail',
 			name: BookDetail,
 			component: BookDetail
+		},
+		{
+			path: '/myCart',
+			name: Mycart,
+			component: Mycart
+		},
+		{
+			path: '/confirmOrder',
+			name: ConfirmOrder,
+			component: ConfirmOrder
+		},
+		{
+			path: '/addressDetails',
+			name: AddressDetails,
+			component: AddressDetails
 		}
 	],
 	mode: 'history'
