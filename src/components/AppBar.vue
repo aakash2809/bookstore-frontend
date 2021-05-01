@@ -29,23 +29,50 @@
               <p id="bottom-name">Aakash</p>
             </div>
           </ul>
-
-          <v-img
-            class="mx-2 supermarket-icon white--text headline"
-            max-height="25"
-            max-width="25"
-            contain
-            :src="require('../assets/images/supermarket.svg')"
-          ></v-img>
+          <router-link
+            :to="{ path: '/myCart' }"
+            style="text-decoration: none; color: inherit"
+          >
+            {{ cartItemQuantity }}
+            <ul>
+              <v-img
+                class="mx-2 supermarket-icon white--text headline"
+                contain
+                :src="require('../assets/images/supermarket.svg')"
+              >
+                {{ cartItemQuantity }}</v-img
+              >
+              <span id="bottom-name-cart">Cart</span>
+            </ul>
+          </router-link>
+          <v-badge id="counter" color="#A03037" :content="3"></v-badge>
         </v-app-bar>
       </v-row>
     </v-card>
   </div>
 </template>
+
 <script>
-export default {};
+export default {
+  name: "AppBar",
+  data: () => ({
+    cartItemQuantity: "",
+    cartItemCounter: 2,
+  }),
+
+  methods: {
+    setAddedToCartItems(cartItemQuantity) {
+      this.cartItemCounter = cartItemQuantity;
+      console.log("cartItemCounter", this.cartItemCounter);
+    },
+  },
+
+  mounted() {
+    console.log("cartItemCounter in mount", this.setAddedToCartItems());
+  },
+};
 </script>
 
-<style lang = "scss" scoped>
+<style lang="scss" scoped>
 @import "../scss/appBar.scss";
 </style>
