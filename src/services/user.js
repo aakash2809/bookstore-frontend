@@ -20,6 +20,10 @@ export default {
 
     addToBag(bookId) {
         return axios.put(`/book/addtobag/${bookId}`);
+    },
+
+    removeItemFromCart(bookId) {
+        return axios.put(`/book/removeFromBag/${bookId}`);
     }
 }
 
