@@ -15,19 +15,18 @@
   
   .mycart-card {
    
-      left: -110px;
+      left: -50px;
       width: 655px;
       border: 1px solid $faintGrey;
       border-radius: 1px;
       background: $white 0% 0% no-repeat padding-box;
-      height: 270px;
       top: -5px;
   }
 
   .book-route-links {
       font-size: 13px;
       margin-bottom: 5px !important;
-      margin-left: 100px;
+      margin-left: 500px;
      
   
   }
@@ -44,26 +43,25 @@
       
   }
   
-  .cart-image {
+   .cart-image {
       height: 120px;
       width: 90px;
       margin-top: 5px;
-  }
-  
+  } 
+   
   .counter {
-      width: 205px;
+      width: 120px;
   }
 
   .place-order-btn {
-  
       color: white !important;
       background-color: rgb(52, 112, 224)!important;
-      width: 110px !important;
-      margin-left: 10px !important;
-      margin-top: -20px;
+      width: 120px !important;
+      //margin-left: 10px !important;
+      //margin-top: -20px;
   }
 
-  .address-form {
+  /* .address-form {
       left: 270px;
       margin-top: 20px;
       width: 655px;
@@ -71,8 +69,8 @@
       border-radius: 1px;
       background: $white 0% 0% no-repeat padding-box;
     }
-  
-    .address-form1{
+  */
+     .address-form1{
       left: 270px;
       margin-top: 20px;
       width: 1055px;
@@ -80,44 +78,44 @@
       border-radius: 0.1px;
       border-color: azure;
       background: $white 0% 0% no-repeat padding-box;
-    }
+    }  
 
   .v-list-item {
       min-height: 25px !important;
   }
   
   .counter .v-text-field--outlined.v-input--dense.v-text-field--outlined > .v-input__control > .v-input__slot{
-      min-height: 0px;
+      min-height: 9px;
   }
 
   .counter .v-text-field.v-text-field--enclosed {
     margin-top: 20px;
-    margin-right: 15px;
-    width: 15px;
+    //margin-right: 15px;
+    width: 20px;
   }
   
   .counter .v-text-field .v-input__control {
-    width: 5px;
+    width: 30px;
   }
 
   .counter-minus{
-    margin-left: 40px;
-    margin-right: 10px;
+    margin-left: 30px;
+    //margin-right: 10px;
   }
   
   .place-order{
       justify-content: flex-end;
   }
   
-  .orderConfirmImage {
+  /* .orderConfirmImage {
     height: 120px;
       width: 10%;
   }
   .confirmation-image .v-responsive {
     flex:none;
-  }
+  } */
 
-  table {
+ /*  table {
     border-collapse: collapse;
     border-spacing: 3px;
   }
@@ -143,4 +141,4 @@
   .continue-shopping {
     color: white !important;
     background-color: skyblue !important;
-  }
+  } */

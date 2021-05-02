@@ -13,18 +13,16 @@
     background: $white 0% 0% no-repeat padding-box;
 }
 
-
-.address-form1 {
+.summary-card{
     left: 270px;
-    margin-top: -10px;
+    margin-top: 0px;
     width: 655px;
     border: 1px solid $faintGrey;
     border-radius: 1px;
-    background: $white 0% 0% no-repeat padding-box; 
+    background: $white 0% 0% no-repeat padding-box;
 }
 
-
-#mySummary {
-    width: 655px; 
-    left: 270px;
+.v-application .mt-10 {
+    margin-top: 16px!important;
 }
+
