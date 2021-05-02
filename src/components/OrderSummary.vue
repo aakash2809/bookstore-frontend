@@ -30,25 +30,27 @@ export default {
   data: () => ({
     image: "",
     author: "",
-    price: "",
+    price: 0,
     title: "",
-    //showDetails: true,
+    showDetails: false,
     book: "",
     orderedBooks: "",
-    bookCount: Number,
+    bookCount: 0,
   }),
   components: {},
 
   methods: {
     setBook(book) {
+      console.log("book detail", book);
       this.title = book.title;
       this.image = book.image;
-      this.price = book.books.price;
+      this.price = book.price;
       this.author = book.author;
       this.showDetails = !this.showDetails;
-      this.bookCount = book.bookCount;
+      this.bookCount = book.quantity;
       this.book = book;
     },
+
     checkoutOrder() {
       this.orderedBooks = this.book;
       this.$emit("onCheckOut", this.orderedBooks);
