@@ -55,7 +55,7 @@
                             <v-text-field
                               dense
                               outlined
-                              v-model="item.counter"
+                              v-model="item.quantity"
                               class="counter-field"
                             ></v-text-field>
                             <v-icon
@@ -91,14 +91,10 @@
             <v-flex md3>
               <br /><br />
               <v-row>
-                <!-- <v-card> </v-card>
-              <v-card class="address-form" outlined> -->
                 <v-form ref="addressForm" v-show="true" class="address-form">
                   <AddressDetails ref="addressdetails" />
                 </v-form>
-                <!-- </v-card> -->
               </v-row>
-
               <v-row>
                 <v-form class="address-form1">
                   <OrderSummary ref="orderSummary" @onCheckOut="checkOut" />
@@ -118,7 +114,6 @@ import AppBar from "../components/AppBar";
 import user from "../services/user";
 import AddressDetails from "../components/AddressDetails";
 import OrderSummary from "../components/OrderSummary";
-//import BookDetail from "./BookDetail.vue";
 import Snackbar from "../components/SnackBarNotify";
 
 export default {
@@ -136,18 +131,19 @@ export default {
     AppBar,
     AddressDetails,
     OrderSummary,
-    //BookDetail,
     Snackbar,
   },
 
   methods: {
     incrementCounter(item) {
-      item.counter = item.counter + 1;
+      console.log("increment called", item.quantity);
+      //console.log("component quntity", item.quantity);
+      item.quantity = item.quantity + 1;
     },
 
     decrementCounter(item) {
-      item.counter = item.counter - 1;
-      if (item.counter <= 0) item.counter = 1;
+      item.quantity = item.quantity - 1;
+      if (item.quantity <= 0) item.quantity = 1;
     },
 
     placeOrder(item) {
