@@ -28,7 +28,7 @@
 
                     <v-flex
                       v-for="item in allBooks"
-                      :key="item.title"
+                      :key="item._id"
                       class="mt-2"
                     >
                       <v-layout class="mb-5">
@@ -124,11 +124,10 @@ export default {
   data: () => ({
     counter_value: Number,
     orderList: [],
+    allBooks: [],
+    cartItemQuantity: Number,
+    timeout: 3500,
   }),
-
-  allBooks: [],
-  cartItemQuantity: Number,
-  timeout: 3500,
 
   components: {
     AppBar,
@@ -179,31 +178,21 @@ export default {
     },
 
     removeItemFromCart(item) {
-      console.log("remove from cart", item);
       //const child = this.$refs.snack;
       try {
-        if (item.isAddedToBag == true)
-          return user
-            .removeFroCart(item._id)
-            .then((result) => {
-              result = result.data.data;
-              console.log("updated bag", result);
-              /* const snackbarData = {
-                text: "Book added to cart",
-                timeout: this.timeout,
-              }; */
-              //this.$refs.snack.setSnackbar(snackbarData);
-              //this.$refs.books.displayAllBooks();
-              //this.$refs.myCart.displayAllBooks();
-              this.displayAllBooks();
-            })
-            .catch((error) => {
-              const snackbarData = {
-                text: error,
-                timeout: this.timeout,
-              };
-              this.$refs.snack.setSnackbar(snackbarData);
-            });
+        user.removeItemFromCart(item._id).then((result) => {
+          console.log("updated bag", result.data.message);
+          const snackbarData = {
+            text: `${result.data.message}`,
+            timeout: this.timeout,
+          };
+          this.$refs.snack.setSnackbar(snackbarData);
+          console.log("snackbar", this.$refs.snack);
+          // this.$refs.snack._data.show = true;
+          //this.$refs.books.displayAllBooks();
+          //this.$refs.myCart.displayAllBooks();
+          this.displayAllBooks();
+        });
       } catch (error) {
         const snackbarData = {
           text: error,
@@ -226,8 +215,7 @@ export default {
     },
   },
 
-  mounted() {
-    // console.log("before mount");
+  beforeMount() {
     this.displayAllBooks();
   },
 };
