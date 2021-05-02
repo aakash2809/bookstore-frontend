@@ -45,7 +45,11 @@
               <span id="bottom-name-cart">Cart</span>
             </ul>
           </router-link>
-          <v-badge id="counter" color="#A03037" :content="3"></v-badge>
+          <v-badge
+            id="counter"
+            color="#A03037"
+            :content="this.cartItemCounter"
+          ></v-badge>
         </v-app-bar>
       </v-row>
     </v-card>
@@ -57,7 +61,7 @@ export default {
   name: "AppBar",
   data: () => ({
     cartItemQuantity: "",
-    cartItemCounter: 2,
+    cartItemCounter: 0,
   }),
 
   methods: {
