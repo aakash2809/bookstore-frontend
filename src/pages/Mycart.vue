@@ -192,15 +192,15 @@ export default {
 
     checkOut(book) {
       console.log("checkout called");
-      // if ((this.$refs.addressForm & { validate: () => {} }).validate()) {
-      console.log("this.$refs.addressForm", this.$refs.addressForm);
-      console.log("ordrelist", this.orderList);
-      this.orderList.push(book);
-      console.log("ordrelist1", this.orderList);
-      this.$router.push({
-        path: "/confirmOrder",
-      });
-      // }
+      if (this.$refs.addressForm.validate()) {
+        console.log("this.$refs.addressForm", this.$refs.addressForm);
+        console.log("ordrelist", this.orderList);
+        this.orderList.push(book);
+        console.log("ordrelist1", this.orderList);
+        this.$router.push({
+          path: "/confirmOrder",
+        });
+      }
     },
   },
 

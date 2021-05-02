@@ -10,6 +10,7 @@
             dense
             outlined
             class="ml-10"
+            :rules="[validationRule.required]"
           ></v-text-field
         ></v-col>
         <v-col cols="12" sm="6" md="3">
@@ -19,6 +20,7 @@
             dense
             outlined
             class=""
+            :rules="[validationRule.required]"
           ></v-text-field>
         </v-col>
       </v-row>
@@ -32,6 +34,7 @@
           rows="2"
           row-height="20"
           class="mr-5 ml-10"
+          :rules="[validationRule.required]"
         ></v-textarea>
       </v-row>
       <v-row>
@@ -42,6 +45,7 @@
             dense
             outlined
             class="ml-7"
+            :rules="[validationRule.required]"
           ></v-text-field
         ></v-col>
         <v-col cols="12" sm="6" md="3">
@@ -51,6 +55,7 @@
             dense
             outlined
             class="mr-5 mob-state-field"
+            :rules="[validationRule.required]"
           ></v-text-field>
         </v-col>
       </v-row>
@@ -68,12 +73,11 @@ export default {
     city: "sagar",
     state: "M.p.",
     isShow: false,
+
+    validationRule: {
+      required: (v) => !!v || "This field is required",
+    },
   }),
-
-  rules: {
-    required: (v) => !!v || "This field is required",
-  },
-
   components: {},
 
   methods: {
