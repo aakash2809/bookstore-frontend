@@ -136,8 +136,6 @@ export default {
 
   methods: {
     incrementCounter(item) {
-      console.log("increment called", item.quantity);
-      //console.log("component quntity", item.quantity);
       item.quantity = item.quantity + 1;
     },
 
@@ -193,7 +191,7 @@ export default {
     },
 
     checkOut(book) {
-      console.log("this.$refs.addressForm", this.$refs.addressForm);
+      console.log("checkout called");
       // if ((this.$refs.addressForm & { validate: () => {} }).validate()) {
       console.log("this.$refs.addressForm", this.$refs.addressForm);
       console.log("ordrelist", this.orderList);

@@ -60,8 +60,9 @@
             
 <script>
 import AppBar from "../components/AppBar";
+
 export default {
-  name: "",
+  name: "ConfirmOrder",
 
   data: () => ({
     orderList: "",
