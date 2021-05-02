@@ -20,5 +20,12 @@ export default {
       timeout: 0,
     };
   },
+  methods: {
+    setSnackbar(snackbarData) {
+      this.text = snackbarData.text;
+      this.time = snackbarData.time;
+      this.show = true;
+    },
+  },
 };
 </script>
