@@ -5,3 +5,39 @@
     margin-top: 12px;
     margin-bottom: 12px;
 }
+.orderConfirmImage {
+    height: 120px;
+      width: 10%;
+  }
+  .confirmation-image .v-responsive {
+    flex:none;
+  } 
+
+   table {
+    border-collapse: collapse;
+    border-spacing: 3px;
+  }
+
+  table tr td{
+    border: 1px solid grey;
+    width: 210px;
+    height: 60px;
+    text-align: center;
+  }
+
+  table{
+    border: 1px solid grey;
+    border-spacing: 5px;
+  }
+
+  table tr th {
+    font-weight: 400px;
+    height: 30px;
+    background-color: grey;
+  }
+
+  .continue-shopping {
+    color: white !important;
+    background-color: skyblue !important;
+  } 
+

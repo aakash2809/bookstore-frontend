@@ -1,6 +1,5 @@
 @import "./variable.scss";
 
-
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -19,10 +18,13 @@
     width: 655px;
     border: 1px solid $faintGrey;
     border-radius: 1px;
-    background: $white 0% 0% no-repeat padding-box;
+    background: $white 0% 0% no-repeat padding-box;   
+}
+.check-out-btn{
+    color: white !important;
+      background-color: rgb(52, 112, 224)!important;
+      width: 120px !important;
 }
 
-.v-application .mt-10 {
-    margin-top: 16px!important;
-}
+
 
