@@ -27,6 +27,7 @@
 <script >
 export default {
   name: "OrderSummary",
+
   data: () => ({
     image: "",
     author: "",
@@ -37,6 +38,7 @@ export default {
     orderedBooks: "",
     bookCount: 0,
   }),
+
   components: {},
 
   methods: {

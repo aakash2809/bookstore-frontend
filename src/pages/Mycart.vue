@@ -8,8 +8,8 @@
         <v-row>
           <v-layout row wrap class="mt-5">
             <v-flex xs24 md12>
-              <v-row class="mt-10 book-route-links">
-                <v-col class="mt-5">
+              <v-row class="mt-10">
+                <v-col class="mt-5 book-route-links">
                   <router-link :to="{ path: '/dashboard' }">Home </router-link>
                   /
                   <router-link :to="{ path: '/myCart' }">My Cart</router-link>
@@ -18,10 +18,6 @@
               <v-row>
                 <v-flex row class="mt-2">
                   <v-card class="mx-auto mycart-card" outlined>
-                    <!-- <v-card-title>{{
-                      "My cart (" + allBooks.length + ")"
-                    }}</v-card-title> -->
-
                     <v-card-title>{{
                       "My cart (" + this.cartItemQuantity + ")"
                     }}</v-card-title>
@@ -38,7 +34,7 @@
                             :src="item.image"
                           ></v-img>
                         </v-flex>
-                        <v-flex md10>
+                        <v-flex md8>
                           <v-row class="ml-5 mt-1">
                             <v-list-item id="title">{{
                               item.title
@@ -67,15 +63,21 @@
                               @click="incrementCounter(item)"
                               >mdi-plus-circle-outline</v-icon
                             >
-                            <v-btn @click="removeItemFromCart(item)">
-                              Remove
-                            </v-btn>
                           </v-row>
                           <v-row class="d-flex place-order">
-                            <v-btn
-                              class="place-order-btn mr-5"
-                              @click="placeOrder(item)"
-                              >Place order</v-btn
+                            <v-col
+                              ><v-btn
+                                class="ml-15"
+                                @click="removeItemFromCart(item)"
+                              >
+                                Remove
+                              </v-btn></v-col
+                            ><v-col
+                              ><v-btn
+                                class="place-order-btn ml-15 mt-1"
+                                @click="placeOrder(item)"
+                                >Place order</v-btn
+                              ></v-col
                             >
                           </v-row>
                         </v-flex>
@@ -85,7 +87,9 @@
                 </v-flex>
               </v-row>
             </v-flex>
-            <v-flex md2>
+
+            <v-flex md3>
+              <br /><br />
               <v-row>
                 <!-- <v-card> </v-card>
               <v-card class="address-form" outlined> -->
@@ -98,7 +102,6 @@
               <v-row>
                 <v-form class="address-form1">
                   <OrderSummary ref="orderSummary" @onCheckOut="checkOut" />
-                  <BookDetail ref="addToBag" />
                 </v-form>
               </v-row>
             </v-flex>
@@ -115,17 +118,17 @@ import AppBar from "../components/AppBar";
 import user from "../services/user";
 import AddressDetails from "../components/AddressDetails";
 import OrderSummary from "../components/OrderSummary";
-import BookDetail from "./BookDetail.vue";
+//import BookDetail from "./BookDetail.vue";
 import Snackbar from "../components/SnackBarNotify";
 
 export default {
   name: "Mycart",
 
   data: () => ({
-    counter_value: Number,
+    counter_value: 0,
     orderList: [],
     allBooks: [],
-    cartItemQuantity: Number,
+    cartItemQuantity: 0,
     timeout: 3500,
   }),
 
@@ -133,7 +136,7 @@ export default {
     AppBar,
     AddressDetails,
     OrderSummary,
-    BookDetail,
+    //BookDetail,
     Snackbar,
   },
 
@@ -149,7 +152,6 @@ export default {
 
     placeOrder(item) {
       const orderSummary = this.$refs.orderSummary;
-
       orderSummary.setBook(item);
       const addressdetails = this.$refs.addressdetails;
       addressdetails.showDetails();
@@ -159,13 +161,10 @@ export default {
       user
         .fetchAllBooks()
         .then((result) => {
-          console.log("Success", result.data.data);
           this.allBooks = result.data.data.filter(
             (book) => book.isAddedToBag == true
           );
           this.cartItemQuantity = this.allBooks.length;
-          console.log("length ", this.allBooks.length);
-          console.log("filtered books ", this.allBooks);
           this.$refs.appbar.setAddedToCartItems(this.cartItemQuantity);
         })
         .catch(() => {
@@ -178,19 +177,14 @@ export default {
     },
 
     removeItemFromCart(item) {
-      //const child = this.$refs.snack;
       try {
         user.removeItemFromCart(item._id).then((result) => {
-          console.log("updated bag", result.data.message);
           const snackbarData = {
             text: `${result.data.message}`,
             timeout: this.timeout,
           };
+
           this.$refs.snack.setSnackbar(snackbarData);
-          console.log("snackbar", this.$refs.snack);
-          // this.$refs.snack._data.show = true;
-          //this.$refs.books.displayAllBooks();
-          //this.$refs.myCart.displayAllBooks();
           this.displayAllBooks();
         });
       } catch (error) {
@@ -203,15 +197,16 @@ export default {
     },
 
     checkOut(book) {
-      if ((this.$refs.addressForm & { validate: () => {} }).validate()) {
-        console.log("this.$refs.addressForm", this.$refs.addressForm);
-        console.log("ordrelist", this.orderList);
-        this.orderList.push(book);
-        console.log("ordrelist1", this.orderList);
-        this.$router.push({
-          path: "/confirmOrder",
-        });
-      }
+      console.log("this.$refs.addressForm", this.$refs.addressForm);
+      // if ((this.$refs.addressForm & { validate: () => {} }).validate()) {
+      console.log("this.$refs.addressForm", this.$refs.addressForm);
+      console.log("ordrelist", this.orderList);
+      this.orderList.push(book);
+      console.log("ordrelist1", this.orderList);
+      this.$router.push({
+        path: "/confirmOrder",
+      });
+      // }
     },
   },
 
