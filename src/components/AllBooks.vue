@@ -40,13 +40,14 @@
       </v-row>
 
       <v-row align="center" justify="center">
-        <a @click="prevPage"> Previous Page </a> <span> >> </span>
-        <a @click="nextPage" class="mr-5"> Next Page</a> >>
+        <a @click="prevPage"> Previous Page </a>
+        <a @click="nextPage" class="ml-5 mr-5"> Next Page</a>
+        {{ current_page }}/{{ page_Count }}
       </v-row>
     </v-flex>
   </div>
 </template>
-
+ 
 <script >
 import user from "../services/user";
 
@@ -55,13 +56,13 @@ export default {
 
   data: () => ({
     pageNumber: 1,
-    pageSize: 10,
+    pageSize: 6,
     current_page: 1,
     current: 1,
-    size: 10,
+    size: 6,
     allBooks: [],
     booksQuantity: Number,
-    page_Count: 0,
+    page_Count: 1,
     paginated_Data: [],
   }),
 
@@ -73,7 +74,6 @@ export default {
     },
 
     prevPage() {
-      console.log("this", this.pageNumber);
       this.pageNumber--;
       this.current_page--;
       this.paginatedData();
@@ -83,9 +83,7 @@ export default {
       console.log("PAGINATED CALLED");
       const start = this.pageNumber * this.size,
         end = start + this.size;
-      this.paginated_Data = this.allBooks;
-      console.log("PAGINATED DATA", this.paginated_Data);
-      console.log("START", start, "  END", end);
+      this.paginated_Data = this.allBooks.slice(start, end);
     },
 
     pageCount() {
@@ -104,7 +102,7 @@ export default {
             (book) => book.isAddedToBag == false
           );
           this.booksQuantity = this.allBooks.length;
-          this.paginatedData();
+          this.pageCount();
         })
         .catch(() => {
           var snack = {
