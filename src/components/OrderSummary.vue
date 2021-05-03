@@ -14,7 +14,7 @@
             <v-list-item>{{ "Quantity: " + bookCount }}</v-list-item>
           </v-row>
           <v-row class="d-flex place-order">
-            <v-btn class="check-out-btn mr-5" @click="checkoutOrder"
+            <v-btn class="check-out-btn ml-15" @click="checkoutOrder"
               >Checkout</v-btn
             >
           </v-row>

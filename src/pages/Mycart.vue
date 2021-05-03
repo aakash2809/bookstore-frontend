@@ -32,6 +32,7 @@
                           <v-img
                             class="cart-image ml-5 mt-2"
                             :src="item.image"
+                            @click="placeOrder(item)"
                           ></v-img>
                         </v-flex>
                         <v-flex md8>
@@ -64,23 +65,13 @@
                               >mdi-plus-circle-outline</v-icon
                             >
                           </v-row>
-                          <v-row class="d-flex place-order">
-                            <v-col
-                              ><v-btn
-                                class="ml-15"
-                                @click="removeItemFromCart(item)"
-                              >
-                                Remove
-                              </v-btn></v-col
-                            ><v-col
-                              ><v-btn
-                                class="place-order-btn ml-15 mt-1"
-                                @click="placeOrder(item)"
-                                >Place order</v-btn
-                              ></v-col
-                            >
-                          </v-row>
                         </v-flex>
+                        <v-flex class="mr-5">
+                          <br /><br /><br /><br />
+                          <v-btn class="" @click="removeItemFromCart(item)">
+                            Remove
+                          </v-btn></v-flex
+                        >
                       </v-layout>
                     </v-flex>
                   </v-card>

@@ -82,7 +82,7 @@ export default {
 
   methods: {
     showDetails() {
-      this.isShow = !this.isShow;
+      this.isShow = true;
     },
   },
 };
