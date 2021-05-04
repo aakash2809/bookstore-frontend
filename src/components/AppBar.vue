@@ -11,7 +11,7 @@
             ></v-img>
           </div>
           <v-card-title class="white--text headline"> BookStore </v-card-title>
-          <div id="top-search-bar">
+          <div id="top-search-bar" v-on:keyup.enter="displayAllBooks">
             <v-text-field
               label="Search"
               prepend-inner-icon="mdi-magnify"
@@ -19,6 +19,7 @@
               dense
               collaps
               solo
+              v-model="search"
             ></v-text-field>
           </div>
           <ul>
@@ -52,27 +53,69 @@
           ></v-badge>
         </v-app-bar>
       </v-row>
+      <Snackbar ref="snackbar" />
     </v-card>
   </div>
 </template>
 
 <script>
+import user from "../services/user";
+import router from "../router";
+import Snackbar from "./SnackBarNotify";
+
 export default {
   name: "AppBar",
+
   data: () => ({
     cartItemQuantity: "",
     cartItemCounter: 0,
+    search: "",
+    allBooks: [],
+    filteredBooks: [],
+    timeout: 3500,
   }),
+  components: {
+    Snackbar,
+  },
 
   methods: {
     setAddedToCartItems(cartItemQuantity) {
       this.cartItemCounter = cartItemQuantity;
-      console.log("cartItemCounter", this.cartItemCounter);
     },
-  },
 
-  mounted() {
-    console.log("cartItemCounter in mount", this.setAddedToCartItems());
+    displayAllBooks() {
+      console.log(this.search);
+      user
+        .fetchAllBooks()
+        .then((result) => {
+          this.allBooks = result.data.data.filter(
+            (book) => book.isAddedToBag == false
+          );
+          this.filteredBooks = this.allBooks.filter(
+            (book) => book.title == this.search
+          );
+          if (this.filteredBooks.length > 0) {
+            console.log("filtered", this.filteredBooks);
+            this.$emit("BOOKS", this.filteredBooks);
+            router.push({
+              path: "/searchResult",
+            });
+          } else {
+            const snackbarData = {
+              text: `books not found with this title`,
+              timeout: this.timeout,
+            };
+            this.$refs.snackbar.setSnackbar(snackbarData);
+          }
+        })
+        .catch(() => {
+          const snackbarData = {
+            text: `got some error try again!`,
+            timeout: this.timeout,
+          };
+          this.$refs.snackbar.setSnackbar(snackbarData);
+        });
+    },
   },
 };
 </script>
