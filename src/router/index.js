@@ -8,6 +8,7 @@ import BookDetail from '@/pages/BookDetail';
 import Mycart from '@/pages/Mycart';
 import ConfirmOrder from '@/pages/ConfirmOrder';
 import AddressDetails from '@/components/AddressDetails';
+import SearchResult from '@/pages/SearchResult';
 
 Vue.use(Router);
 
@@ -52,6 +53,11 @@ export default new Router({
 			path: '/addressDetails',
 			name: AddressDetails,
 			component: AddressDetails
+		},
+		{
+			path: '/searchResult',
+			name: SearchResult,
+			component: SearchResult
 		}
 	],
 	mode: 'history'
