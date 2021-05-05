@@ -9,7 +9,7 @@
             v-model="fullName"
             dense
             outlined
-            class="ml-10"
+            class="fullName ml-10"
             :rules="[validationRule.required]"
           ></v-text-field
         ></v-col>
@@ -19,7 +19,7 @@
             v-model="mobileNumber"
             dense
             outlined
-            class=""
+            class="mobileNumber"
             :rules="[validationRule.required]"
           ></v-text-field>
         </v-col>
@@ -33,7 +33,7 @@
           outlined
           rows="2"
           row-height="20"
-          class="mr-5 ml-10"
+          class="address mr-5 ml-10"
           :rules="[validationRule.required]"
         ></v-textarea>
       </v-row>
@@ -44,7 +44,7 @@
             v-model="city"
             dense
             outlined
-            class="ml-7"
+            class="city ml-7"
             :rules="[validationRule.required]"
           ></v-text-field
         ></v-col>

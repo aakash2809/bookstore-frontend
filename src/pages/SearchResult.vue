@@ -2,7 +2,7 @@
   <v-flex>
     <div id="app">
       <v-app id="inspire">
-        <Appbar ref="appbar" @BOOKS="getFilteredBooks" />
+        <Appbar ref="appbar" v-on:BOOKS="getFilteredBooks($event)" />
         <v-row>
           <Books ref="books" />
         </v-row>
@@ -26,15 +26,15 @@ export default {
     Appbar,
     Books,
   },
+
   methods: {
     getFilteredBooks(books) {
+      console.log("book caaled", books);
       this.refs.books.allBooks = books;
     },
   },
-
-  created() {
-    // console.log(EventBus.$on("BOOKS"));
-    //this.abc();
+  mounted() {
+    console.log("app bar", this.$refs.appbar);
   },
 };
 </script>

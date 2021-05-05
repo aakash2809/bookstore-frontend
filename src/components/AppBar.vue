@@ -95,8 +95,9 @@ export default {
             (book) => book.title == this.search
           );
           if (this.filteredBooks.length > 0) {
-            console.log("filtered", this.filteredBooks);
-            this.$emit("BOOKS", this.filteredBooks);
+            console.log("Book tranform", this.filteredBooks);
+            let a = this.$emit("BOOKS", this.filteredBooks);
+            console.log("Bookdata", a);
             router.push({
               path: "/searchResult",
             });
