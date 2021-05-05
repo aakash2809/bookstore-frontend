@@ -27,4 +27,13 @@ describe('Books.vue', () => {
     it('check if child Books exists', () => {
         expect(wrapper.contains(Books)).toBe(true);
     })
+
+    it('ifComponentHasName_shouldReturn_string', () => {
+        expect(typeof Books.name).toBe('string')
+    })
+
+    it('ifComponentHasMethods_shouldReturn_object', () => {
+        expect(typeof Books.methods).toBe('object')
+    })
+
 })

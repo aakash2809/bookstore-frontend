@@ -8,7 +8,7 @@ import { createLocalVue, shallowMount } from '@vue/test-utils';
 import AddressDetails from '../../src/components/AddressDetails';
 import Vuetify from 'vuetify';
 
-describe('login.vue', () => {
+describe('AddressDetails.vue', () => {
   let wrapper;
   beforeEach(() => {
     const localVue = createLocalVue();
@@ -18,8 +18,41 @@ describe('login.vue', () => {
 
   });
 
-  it.only('renders a vue instance', () => {
+  it('renders a vue instance', () => {
     expect(shallowMount(AddressDetails).isVueInstance()).toBe(true);
+  });
+
+  it('ifComponentHasData_shouldReturn_function', () => {
+    expect(typeof AddressDetails.data).toBe('function')
+  })
+
+  it('ifComponentHasMethods_shouldReturn_object', () => {
+    expect(typeof AddressDetails.methods).toBe('object')
+  })
+
+  it('WhenGiveFullNameIsEmpity_shouldReturn_error', () => {
+    wrapper.setData({ fullName: '' })
+    expect(wrapper.vm.fullName).toBe("");
+  })
+
+  it('whenExistingclassNamePass_shouldReturn_true', () => {
+    expect(wrapper.find('.fullName').exists()).toBe(true)
+  });
+
+  it('whenExistingclassNamePass_shouldReturn_true', () => {
+    expect(wrapper.find('.city').exists()).toBe(true)
+  });
+
+  it('whenExistingclassNamePass_shouldReturn_true', () => {
+    expect(wrapper.find('.mob-state-field').exists()).toBe(true)
+  });
+
+  it('whenExistingclassNamePass_shouldReturn_true', () => {
+    expect(wrapper.find('.mobileNumber').exists()).toBe(true)
+  });
+
+  it('whenExistingclassNamePass_shouldReturn_true', () => {
+    expect(wrapper.find('.address').exists()).toBe(true)
   });
 });
 

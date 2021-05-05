@@ -25,5 +25,13 @@ describe('DashBoard.vue', () => {
     it('whenExistingIdPass_shouldReturn_true', () => {
         expect(wrapper.find('#app').exists()).toBe(true)
     });
+
+    it('ifComponentHasComponents_shouldReturn_object', () => {
+        expect(typeof DashBoard.components).toBe('object')
+    })
+
+    it('ifComponentHasName_shouldReturn_string', () => {
+        expect(typeof DashBoard.name).toBe('string')
+    })
 });
 

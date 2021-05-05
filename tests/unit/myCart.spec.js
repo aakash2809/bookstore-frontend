@@ -23,7 +23,6 @@ describe('MyCart.vue', () => {
         expect(wrapper.contains(AddressDetails)).toBe(true);
     });
 
-
     it('check if child OrderSummary exists', () => {
         expect(wrapper.contains(OrderSummary)).toBe(true);
     })
@@ -31,4 +30,17 @@ describe('MyCart.vue', () => {
     it('check if child Appbar exists', () => {
         expect(wrapper.contains(AppBar)).toBe(true);
     })
+
+    it('ifComponentHasComponents_shouldReturn_object', () => {
+        expect(typeof MyCart.components).toBe('object')
+    })
+
+    it('ifComponentHasName_shouldReturn_string', () => {
+        expect(typeof MyCart.name).toBe('string')
+    })
+
+    it('ifComponentHasMethods_shouldReturn_object', () => {
+        expect(typeof MyCart.methods).toBe('object')
+    })
+
 })

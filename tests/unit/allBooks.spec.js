@@ -21,7 +21,43 @@ describe('Books.vue', () => {
         expect(wrapper.text()).toContain('Books')
     })
 
-    it('check if child Books exists', () => {
+    it('has data', () => {
+        expect(typeof Books.data).toBe('function')
+    })
+
+    it('ifComponentHasBeforeMount_shouldReturn_function', () => {
+        expect(typeof Books.beforeMount).toBe('function')
+    })
+
+    it('ifComponentHasMethods_shouldReturn_object', () => {
+        expect(typeof Books.methods).toBe('object')
+    })
+
+    it('ifHasPrevPageMethodInsideMethods_shouldReturn_function', () => {
+        expect(typeof Books.methods.prevPage).toBe('function')
+    })
+
+    it('ifHasNextPageMethodInsideMethods_shouldReturn_function', () => {
+        expect(typeof Books.methods.nextPage).toBe('function')
+    })
+
+    it('whenGivenNameExist_shouldReturn_true', () => {
         expect(wrapper.contains(Books)).toBe(true);
     })
+
+    it('ifGivenTextExistInHtml_should_Pass', () => {
+        expect(wrapper.html()).toContain('Previous Page')
+    })
+
+    it('ifGivenTextExistInHtml_should_Pass', () => {
+        expect(wrapper.html()).toContain('Next Page')
+    })
+
+    it('whenExistingclassNamePass_shouldReturn_true', () => {
+        expect(wrapper.find('.book-layout').exists()).toBe(true)
+    });
+
+    it('whenExistingclassNamePass_shouldReturn_true', () => {
+        expect(wrapper.find('.book-size').exists()).toBe(true)
+    });
 })
