@@ -10,7 +10,7 @@
             v-for="item in paginated_Data"
             :key="item.title"
             md3
-            xs2
+            xs3
             class="mb-5 mr--25 mt-2"
           >
             <router-link
@@ -113,6 +113,7 @@ export default {
         });
     },
   },
+
   beforeMount() {
     console.log("before mount");
     this.displayAllBooks();

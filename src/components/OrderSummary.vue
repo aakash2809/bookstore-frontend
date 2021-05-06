@@ -14,9 +14,7 @@
             <v-list-item>{{ "Quantity: " + bookCount }}</v-list-item>
           </v-row>
           <v-row class="d-flex place-order">
-            <v-btn class="check-out-btn ml-15" @click="checkoutOrder"
-              >Checkout</v-btn
-            >
+            <v-btn class="check-out-btn" @click="checkoutOrder">Checkout</v-btn>
           </v-row>
         </v-flex>
       </v-layout>
@@ -54,7 +52,6 @@ export default {
     },
 
     checkoutOrder() {
-      console.log("checkout called1");
       this.orderedBooks = this.book;
       this.$emit("onCheckOut", this.orderedBooks);
     },

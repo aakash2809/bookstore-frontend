@@ -1,17 +1,19 @@
 <template>
   <div class="book-size">
     <v-flex>
+      <v-row
+        ><v-title class="books-title"
+          >Books ({{ booksQuantity }})</v-title
+        ></v-row
+      >
       <v-row>
-        <v-title class="books-title mb-8"
-          >Books ({{ this.booksQuantity }})</v-title
-        >
         <v-layout row wrap class="book-layout">
           <v-flex
-            v-for="item in paginated_Data"
+            v-for="item in allBooks"
             :key="item.title"
             md3
-            xs2
-            class="mb-5 mr--25 mt-2"
+            xs3
+            class="mb-5 mr--25 mt-8"
           >
             <router-link
               class="router-link"
@@ -62,7 +64,7 @@ export default {
     current: 1,
     size: 6,
     allBooks: [],
-    booksQuantity: Number,
+    booksQuantity: 0,
     page_Count: 1,
     paginated_Data: [],
   }),
@@ -81,26 +83,33 @@ export default {
     },
 
     paginatedData() {
-      console.log("PAGINATED CALLED");
+      //this.paginated_Data = this.allBooks;
       const start = this.pageNumber * this.size,
         end = start + this.size;
       this.paginated_Data = this.allBooks.slice(start, end);
+      console.log("PAGINATED CALLED", this.paginated_Data);
     },
 
     pageCount() {
+      this.paginated_Data = this.allBooks;
+      console.log("PAGINATED CALLED", this.paginated_Data);
+      this.booksQuantity = this.allBooks.length;
+      console.log("page count", this.allBooks);
+
       let length = this.allBooks.length,
         size = this.size;
       this.page_Count = Math.ceil(length / size);
+
       this.paginatedData();
     },
   },
 
-  mounted() {
+  computed() {
     this.pageCount();
   },
 };
 </script>
 
 <style lang="scss">
-@import "../scss/books.scss";
+//@import "../scss/books.scss";
 </style>

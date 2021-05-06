@@ -2,9 +2,9 @@
   <v-flex>
     <div id="app">
       <v-app id="inspire">
-        <Appbar ref="appbar" v-on:BOOKS="getFilteredBooks($event)" />
+        <Appbar ref="appbar" @BOOKS="getFilteredBooks" />
         <v-row>
-          <Books ref="books" />
+          <Books ref="book" />
         </v-row>
       </v-app>
     </div>
@@ -29,12 +29,12 @@ export default {
 
   methods: {
     getFilteredBooks(books) {
-      console.log("book caaled", books);
-      this.refs.books.allBooks = books;
+      console.log("data in transbook", this.$refs.book.allBooks);
+      console.log("book caaled", this.$refs.appbar.search);
+      this.$refs.book.allBooks = books;
+      console.log("data in transbook", this.$refs.book.allBooks);
+      this.$refs.book.pageCount();
     },
-  },
-  mounted() {
-    console.log("app bar", this.$refs.appbar);
   },
 };
 </script>
