@@ -10,18 +10,19 @@
             v-for="item in paginated_Data"
             :key="item.title"
             md3
-            xs3
+            xs4
+            sm3
             class="mb-5 mr--25 mt-2"
           >
             <router-link
               class="router-link"
               :to="{ path: '/bookDetail', query: { book: item } }"
             >
-              <v-card class="mx-auto b-card" outlined>
+              <v-card class="book-card mx-auto b-card" outlined>
                 <v-row class="book-image">
                   <v-img class="mx-auto mt-4 mb-4" :src="item.image"></v-img>
                 </v-row>
-                <v-row class="book-content mt-5">
+                <v-row class="book-content mt-8">
                   <v-list-item class="book-title">{{ item.title }}</v-list-item>
 
                   <v-list-item class="book-author">{{

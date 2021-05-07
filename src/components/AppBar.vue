@@ -1,59 +1,68 @@
 <template>
   <div>
     <v-card class="mx-auto overflow-hidden topBar">
-      <v-row>
-        <v-app-bar color="#A03037" class="main-bar" fixed elevation="1">
-          <div class="book-icon">
-            <v-img
-              class="mx-2 book-icon"
-              contain
-              :src="require('../assets/images/education.svg')"
-            ></v-img>
+      <v-app-bar color="#A03037" class="main-bar" fixed>
+        <div class="book-icon">
+          <v-img
+            class="book-icon"
+            contain
+            :src="require('../assets/images/education.svg')"
+          ></v-img>
+        </div>
+
+        <!-- <v-card-title class="white--text row wrap"> BookStore </v-card-title> -->
+        <v-toolbar-title class="row wrap white--text ml-5"
+          >BookStore</v-toolbar-title
+        >
+
+        <div id="top-search-bar" v-on:keyup.enter="displayAllBooks">
+          <v-text-field
+            class="mt-7 appBar"
+            label="Search"
+            prepend-inner-icon="mdi-magnify"
+            autocomplete="off"
+            dense
+            collaps
+            solo
+            v-model="search"
+          ></v-text-field>
+        </div>
+        <!--   <v-spacer></v-spacer> -->
+        <ul>
+          <div class="white--text avatar">
+            <v-icon class="white--text account-icon"
+              >mdi-account-outline</v-icon
+            >
+            <p id="bottom-name">Aakash</p>
           </div>
-          <v-card-title class="white--text headline"> BookStore </v-card-title>
-          <div id="top-search-bar" v-on:keyup.enter="displayAllBooks">
-            <v-text-field
-              label="Search"
-              prepend-inner-icon="mdi-magnify"
-              autocomplete="off"
-              dense
-              collaps
-              solo
-              v-model="search"
-            ></v-text-field>
-          </div>
+        </ul>
+        <router-link
+          :to="{ path: '/myCart' }"
+          style="text-decoration: none; color: inherit"
+        >
+          {{ cartItemQuantity }}
           <ul>
-            <div class="avatar">
-              <v-icon class="white--text mr-8 account-icon"
-                >mdi-account-outline</v-icon
-              >
-              <p id="bottom-name">Aakash</p>
-            </div>
-          </ul>
-          <router-link
-            :to="{ path: '/myCart' }"
-            style="text-decoration: none; color: inherit"
-          >
-            {{ cartItemQuantity }}
-            <ul>
+            <div class="white--text avatar">
               <v-img
-                class="mx-2 supermarket-icon white--text headline"
+                class="mt-4 mx-2 supermarket-icon white--text headline"
                 contain
                 :src="require('../assets/images/supermarket.svg')"
               >
                 {{ cartItemQuantity }}</v-img
               >
               <span id="bottom-name-cart">Cart</span>
-            </ul>
-          </router-link>
-          <v-badge
-            id="counter"
-            color="#A03037"
-            :content="this.cartItemCounter"
-          ></v-badge>
-        </v-app-bar>
-      </v-row>
+            </div>
+          </ul>
+        </router-link>
+        <v-badge
+          id="counter"
+          color="#A03037"
+          :content="this.cartItemCounter"
+        ></v-badge>
+      </v-app-bar>
+      <!-- </v-row> -->
       <Snackbar ref="snackbar" />
+      <!-- <Books ref="book" /> -->
     </v-card>
   </div>
 </template>
@@ -62,6 +71,7 @@
 import user from "../services/user";
 import router from "../router";
 import Snackbar from "./SnackBarNotify";
+// import Books from "../components/FilteredBooksForSearch";
 
 export default {
   name: "AppBar",
@@ -76,6 +86,7 @@ export default {
   }),
   components: {
     Snackbar,
+    // Books,
   },
 
   methods: {
@@ -96,8 +107,12 @@ export default {
           );
           if (this.filteredBooks.length > 0) {
             console.log("Book tranform", this.filteredBooks);
-            let a = this.$emit("BOOKS", this.filteredBooks);
-            console.log("Bookdata", a);
+
+            //this.$refs.book.allBooks = this.filteredBooks;
+            // console.log("Book tranform1", this.refs.book.allBooks);
+            //this.$refs.book.pageCount();
+            this.$emit("BOOKS", this.filteredBooks);
+
             router.push({
               path: "/searchResult",
             });

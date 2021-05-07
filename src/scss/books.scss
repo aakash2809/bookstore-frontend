@@ -5,11 +5,11 @@
 }
 
 .book-layout {
-   
     margin-left: 140px;
-  margin-bottom: 40px;
-
+    margin-bottom: 40px;
+    padding-left: 20px;
 }
+
 .b-card {
     width: 200px;
     word-break: break-word;
@@ -21,37 +21,41 @@
     margin-right: 0px;
     margin-top: 0px;
 }
-.book-image .v-image {
-    height: 120px;
+.book-image.v-image {
+    height: 100px;
     width: 80px;
     background-color: $faintGrey;
 }
+
 .book-image {
+    height: 150px;
     background-color: rgb(228, 225, 225)
 }
 
-.book-content .v-list-item {
+.book-content.v-list-item {
     min-height: 25px !important;
 }
-.book-title {
 
-font-size: 15px;
-font-weight:55px;
-width: 130px;
-height: 19px;
-text-align: left;
-font: normal normal normal 14px/19px ;
-letter-spacing: 0px;
-text-decoration: none;
-text-decoration-line: none;
-border-bottom: none;
-border: 0;
+.book-title {
+    font-size: 12px;
+    font-weight:55px;
+    width: 200px;
+    height: 19px;
+    text-align: left;
+    font: normal normal normal 14px/19px ;
+    letter-spacing: 0px;
+    text-decoration: none;
+    text-decoration-line: none;
+    border-bottom: none;
+    border: 0;
 }
+
 .book-author {
     font-size: 12px;
     color:grey !important;
     font-weight: 500px;
 }
+
 .book-price {
     font-size: 15px;
     font-weight: bold;
@@ -65,7 +69,7 @@ border: 0;
 .books-title {
     margin-top: 120px;
     margin-left: 80px;
-    font-size: 22px;
+    font-size: 15px;
     font-weight: bold;
 }
 
@@ -81,9 +85,11 @@ border: 0;
     height: 102%;
     background-color: white; 
 }
+
 .router-link {
     text-decoration: none;
 }
+
 .pagination {
     list-style-type: none;
   }
@@ -96,3 +102,117 @@ border: 0;
     background-color: #4AAE9B;
     color: #ffffff;
   }
+
+  @media (min-width: 0){
+    .flex.xs4 {
+        flex-basis: 33.3333333333%;
+        flex-grow: 0;
+        max-width: 38.333333%;
+    }
+  }
+
+  @media only screen and (max-width: 360px) {
+    .book-content.v-list-item{
+        min-height: 32px ;
+    }
+
+    .book-layout {
+   
+      margin-left: 140px;
+      margin-bottom: 40px;
+      padding-left: 20px;   
+    } 
+
+   .v-card{
+      margin-left: 140px;
+    }
+
+    .book-author {
+       font-size: 12px;
+       color:grey !important;
+       font-weight: 500px;
+    }
+    .book-title {
+        font-size: 12px;
+        font-weight:55px;
+        width: 160px;
+        height: 19px;
+        text-align: left;
+        font: normal normal normal 14px/19px ;
+        letter-spacing: 0px;
+        text-decoration: none;
+        text-decoration-line: none;
+        border-bottom: none;
+        border: 0;
+        }
+  }
+
+  @media screen and (max-width: 411px) {
+    .book-content.v-list-item{
+        min-height: 32px ;
+    }
+    .v-card{
+        margin-left: 150px;
+    }
+    
+    .book-author {
+        font-size: 12px;
+        color:grey !important;
+        font-weight: 500px;
+    }
+    .book-title {
+      font-size: 12px;
+      font-weight:55px;
+      width: 160px;
+      height: 19px;
+      text-align: left;
+      font: normal normal normal 14px/19px ;
+      letter-spacing: 0px;
+      text-decoration: none;
+      text-decoration-line: none;
+      border-bottom: none;
+      border: 0;
+     }
+  }
+
+  @media screen and (min-width:361) and (max-width: 768px) {
+   .book-card{
+        height: 260px;
+        width:183px;
+    } 
+
+     .book-content.v-list-item{
+        min-height: 32px ;
+    } 
+
+    .book-layout {
+       margin-left: 140px;
+       margin-bottom: 40px;
+    } 
+
+    .b-card {
+        width: 200px;
+        word-break: break-word;
+    } 
+    
+    .b-card .row {
+        display: grid;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+    }
+
+    .book-image.v-image {
+        height: 100px;
+        width: 60px;
+        background-color: $faintGrey;
+    }
+
+     .book-image {
+        background-color: rgb(228, 225, 225);
+        height: 150px;
+        width: 180px;
+        background-color: $faintGrey;
+    } 
+    
+} 
