@@ -2,7 +2,6 @@
 
 .supermarket-icon {
     margin-left: 43px;
-    //margin-top: -10px;
     min-height:13px;
     min-width:19px;
 }
@@ -14,14 +13,15 @@
    padding-left:-25px;
 }
 
-.avatar {
+ .avatar {
     justify-content:flex-end;
     margin-top: 1px;
-}
+} 
 
 #top-search-bar {
-    margin-right: 230px; 
+    margin-right: 250px; 
     width: 500px;
+    padding-top:5px
 }
 
 .main-bar {
@@ -42,7 +42,7 @@
 }
 
 #bottom-name {
-    font-size: 11px;
+   font-size: 11px;
    margin-bottom: -11px;
    color:white;
    padding-left: -1px;
@@ -61,7 +61,9 @@
         min-height:10px;
         min-width:15px;
     }
-
+  label{
+      font-size: 5px;
+  }
     .title {
         font-size:4px;
        color: $white;
@@ -69,18 +71,28 @@
     }
 
     .v-application .ml-5 {
-        margin-left: -10px!important;
-        font-size: 15px;
+        margin-left: 6px !important;
+        font-size: 12px;
     }
 
     .avatar {
         justify-content:flex-end;
         margin-top: 1px;
+        margin-left: -20px;
     }
+
+    .book-icon {  
+        margin-top: 1px;
+        padding-right:9px;
+        margin-left: 0px;
+        height:20px;
+        width:20px;
+    }
+
     #top-search-bar {
-        margin-right: 0px;
-        margin-left: 2px;
-        width:130px;
+        margin-right: 22px;
+        width: 130px;
+        padding-top: 9px;
     }
     
     .main-bar {
@@ -96,7 +108,6 @@
         min-width:15px;
     }
    
-
     .v-application .ml-5 {
         margin-left: 5px!important;
         font-size: 18px;
@@ -106,20 +117,23 @@
         justify-content:flex-start;
         margin-top: 1px;
     }
+
     #top-search-bar {
-        margin-right:200px;
-        width:200px;
+        margin-right: 92px;
+        width: 250px;
+        margin-top: 7px;
     }
    
-.book-icon {  
-    margin-top: 1px;
-    padding-right:10px;
-    margin-left: 20px;
-    max-height:60px;
-    max-width:60px;
-}
+   .book-icon {  
+        margin-top: 1px;
+        padding-right:10px;
+        margin-left: 20px;
+        max-height:60px;
+        max-width:60px;
+   } 
+
     .main-bar {
         color: $brown;
         width:100%
     }
-  }
+}

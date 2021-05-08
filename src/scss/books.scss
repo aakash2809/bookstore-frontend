@@ -5,9 +5,7 @@
 }
 
 .book-layout {
-    margin-left: 140px;
-    margin-bottom: 40px;
-    padding-left: 20px;
+    padding-left: 120px;
 }
 
 .b-card {
@@ -81,9 +79,17 @@
 
 }
 
+.child-flex>*, .flex {
+    flex: 1 1 auto;
+    max-width: 94%;
+}
+
+
 .book-size {
     height: 102%;
     background-color: white; 
+    flex: 1 1 auto;
+    max-width: 100%;
 }
 
 .router-link {
@@ -112,6 +118,7 @@
   }
 
   @media only screen and (max-width: 360px) {
+
     .book-content.v-list-item{
         min-height: 32px ;
     }
@@ -147,34 +154,6 @@
         }
   }
 
-  @media screen and (max-width: 411px) {
-    .book-content.v-list-item{
-        min-height: 32px ;
-    }
-    .v-card{
-        margin-left: 150px;
-    }
-    
-    .book-author {
-        font-size: 12px;
-        color:grey !important;
-        font-weight: 500px;
-    }
-    .book-title {
-      font-size: 12px;
-      font-weight:55px;
-      width: 160px;
-      height: 19px;
-      text-align: left;
-      font: normal normal normal 14px/19px ;
-      letter-spacing: 0px;
-      text-decoration: none;
-      text-decoration-line: none;
-      border-bottom: none;
-      border: 0;
-     }
-  }
-
   @media screen and (min-width:361) and (max-width: 768px) {
    .book-card{
         height: 260px;
@@ -185,9 +164,8 @@
         min-height: 32px ;
     } 
 
-    .book-layout {
-       margin-left: 140px;
-       margin-bottom: 40px;
+   .book-layout {
+      padding-left: 100px;
     } 
 
     .b-card {
@@ -214,5 +192,12 @@
         width: 180px;
         background-color: $faintGrey;
     } 
+
+    .book-size {
+        height: 100%;
+        background-color: white; 
+        flex: 1 1 auto;
+        max-width: 100%;
+    }
     
 } 

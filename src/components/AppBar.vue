@@ -17,7 +17,7 @@
 
         <div id="top-search-bar" v-on:keyup.enter="displayAllBooks">
           <v-text-field
-            class="mt-7 appBar"
+            class="mt-5 appBar"
             label="Search"
             prepend-inner-icon="mdi-magnify"
             autocomplete="off"
