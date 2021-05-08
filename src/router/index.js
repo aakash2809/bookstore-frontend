@@ -9,7 +9,6 @@ import Mycart from '@/pages/Mycart';
 import ConfirmOrder from '@/pages/ConfirmOrder';
 import AddressDetails from '@/components/AddressDetails';
 import SearchResult from '@/pages/SearchResult';
-import DemoApp from '@/components/DemoApp';
 
 Vue.use(Router);
 
@@ -60,11 +59,6 @@ export default new Router({
 			name: SearchResult,
 			component: SearchResult
 		},
-		{
-			path: '/demoApp',
-			name: DemoApp,
-			component: DemoApp
-		}
 	],
 	mode: 'history'
 });
