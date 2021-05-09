@@ -6,12 +6,9 @@
     <v-content class="display-layout">
       <v-col>
         <v-row class="book-route-links mb-2">
-          <a @click="goToHome">Home</a> /
-          <router-link :to="{ path: '/addToBag', query: { book: item } }"
-            >Book</router-link
-          >
+          <a @click="goToHome">Home</a>
         </v-row>
-        <v-row>
+        <v-row class="body-content">
           <v-layout row wrap class="mt-5">
             <v-flex xs12 sm6 md6>
               <v-row>
@@ -57,7 +54,6 @@
                 <v-list-item class="add-bag-book-description mt-5"
                   >Book Detail</v-list-item
                 >
-
                 <v-list-item class="description">{{
                   item.description
                 }}</v-list-item>
@@ -93,7 +89,6 @@
 
               <br />
             </v-flex>
-            <!-- <MyCart ref="mycart" v-show="false" /> -->
           </v-layout>
         </v-row>
       </v-col>
