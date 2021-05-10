@@ -1,5 +1,5 @@
 <template>
-  <v-form @submit.prevent="validate">
+  <v-form ref="form" @submit.prevent="validate">
     <br />
     <v-text-field
       outlined
