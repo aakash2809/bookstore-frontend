@@ -1,0 +1,47 @@
+@import "./variable.scss";
+// .all-content{
+    
+//     //display: flex;
+//     //flex-direction: row;
+//     //flex-wrap: wrap;
+//    /*  counter-reset: elements;
+//     border: dashed 4px #A9A9A9;
+//     color: white;
+//     transition: all 400ms linear;
+//     min-height: 400px; */
+// }
+.userOptions{
+   
+   width: 400px;
+   height: 300px;
+ 
+    margin-top: 200px;
+    margin-left: 400px;
+    border: 1px solid $faintGrey;
+    border-radius: 1px;
+    background: $white 0% 0% no-repeat padding-box;
+    top: -5px;  
+}
+
+h3{
+    margin-left: 100px;
+    margin-top:50px
+}
+
+.options{
+padding-top: 50px;
+margin-left: 20px;
+}
+
+.admin{
+    color: white !important;
+    background-color:$brown !important;
+    width: 100px !important;
+}
+.user{
+    color: white !important;
+    //background-color: rgb(52, 112, 224)!important;
+    background-color:$brown !important;
+
+    width: 100px !important;
+}
