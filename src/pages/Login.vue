@@ -63,6 +63,7 @@ export default {
       minLength: (v) => (v && v.length > 7) || "password must be 8 characters",
     },
   }),
+
   components: {
     SnackbarNotify,
   },
