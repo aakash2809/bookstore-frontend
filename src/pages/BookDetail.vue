@@ -1,5 +1,5 @@
 <template>
-  <v-app class="full-layout">
+  <v-app class="full-layout ml-8">
     <v-row>
       <AppBar ref="appbar" />
     </v-row>

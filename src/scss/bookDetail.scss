@@ -110,14 +110,15 @@
         color: white !important;
         background-color: rgb(52, 112, 224)!important;
         width: 81px !important;
-        margin-left: 310px;
+        margin-left: 250px;
         margin-top: -60px;
      }
+    
     .add-to-bag {
         color: $white !important;
         background-color: #A03037 !important;
         width: 100px !important;
-        margin-left: 90px; 
+        margin-left: 50px; 
      }
 
     .wish-list-btn {
@@ -125,7 +126,7 @@
         font-size: 8px;
         background-color: #363535 !important;
         width: 100px !important;
-        margin-left: 32px;
+        margin-left: 20px;
     }
 
     .full-layout {
@@ -135,7 +136,7 @@
     .display-layout {
         font-size: 17px;
         margin-top: -260px !important;
-        margin-right: 33px; 
+        padding-left: 20px;
     }
 
     .book-item-image {
@@ -154,21 +155,28 @@
     .display-layout {
         font-size: 17px;
         margin-top: 77px !important;
-        margin-right: 33px;     
+        margin-right: -33px;     
     }
 
+    .body-content{
+        margin-left: 5px;
+    }
+
+    .full-layout {
+        max-height: 80% !important
+    }
     .add-to-bag {
         color: $white !important;
         background-color: #A03037 !important;
         width: 200px !important;
-        margin-left: 90px; 
+        margin-left: 60px; 
       }
     
     .feedback-submit-button {
         color: white !important;
         background-color: rgb(52, 112, 224)!important;
         width: 81px !important;
-        margin-left: 260px;
+        margin-left: 220px;
         margin-top: -60px;
      }
 
@@ -177,14 +185,14 @@
         font-size: 8px;
         background-color: #363535 !important;
         width: 200px !important;
-        margin-left: 90px;
+        margin-left: 60px;
       }
 
     .book-wishlist-card {
         height: 220px;
         width: 200px;
         margin-top: 0px;
-        margin-left:30px;
+        margin-left:100px;
         color: rgb(167, 171, 172);
     } 
 
