@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import RegistrationOrLogin from '@/pages/RegistrationOrLogin';
+import RegistrationOrLoginForAdmin from '@/pages/RegistrationOrLoginForAdmin';
 import DashBoard from '@/pages/DashBoard';
 import ForgotPassword from '@/pages/ForgotPassword';
 import ForgotPasswordForm from '@/components/ForgotPasswordForm';
@@ -9,11 +10,22 @@ import Mycart from '@/pages/Mycart';
 import ConfirmOrder from '@/pages/ConfirmOrder';
 import AddressDetails from '@/components/AddressDetails';
 import SearchResult from '@/pages/SearchResult';
+import RootPage from '@/pages/RootPage';
 
 Vue.use(Router);
 
 export default new Router({
 	routes: [
+		{
+			path: '/',
+			name: RootPage,
+			component: RootPage
+		},
+		{
+			path: '/admin',
+			name: RegistrationOrLoginForAdmin,
+			component: RegistrationOrLoginForAdmin
+		},
 		{
 			path: '/registrationOrLogin',
 			name: RegistrationOrLogin,

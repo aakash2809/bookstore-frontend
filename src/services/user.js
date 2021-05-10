@@ -6,8 +6,17 @@ export default {
         return axios.post("/userRegister", userDetail);
     },
 
+    registerAdmin(userDetail) {
+        console.log("axios", userDetail)
+        return axios.post("/adminRegister", userDetail);
+    },
+
     loginUser(loginCredentials) {
         return axios.post("/userLogin", loginCredentials);
+    },
+
+    loginAdmin(loginCredentials) {
+        return axios.post("/adminLogin", loginCredentials);
     },
 
     fetchAllBooks() {
