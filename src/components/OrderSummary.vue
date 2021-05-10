@@ -68,5 +68,5 @@ export default {
 
 
 <style lang="scss" scoped >
-@import "../scss/addressDetail.scss";
+@import "../scss/orderSummary.scss";
 </style>

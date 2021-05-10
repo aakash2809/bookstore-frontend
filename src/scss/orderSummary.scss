@@ -1,0 +1,55 @@
+@import "./variable.scss";
+
+.summary-card{
+    left: 270px;
+    margin-top: 0px;
+    width: 655px;
+    border: 1px solid $faintGrey;
+    border-radius: 1px;
+    background: $white 0% 0% no-repeat padding-box;   
+}
+
+.check-out-btn{
+    color: white !important;
+      background-color: rgb(52, 112, 224)!important;
+      width: 120px !important;
+      left: 380px;
+}
+
+@media only screen and (min-width: 0px ) and (max-width: 360px ) {
+    .summary-card{
+        left: 12px;
+        margin-top: 0px;
+        width: 300px;
+        border: 1px solid $faintGrey;
+        border-radius: 1px;
+        background: $white 0% 0% no-repeat padding-box;   
+    }
+
+    .check-out-btn{
+        color: white !important;
+          background-color: rgb(52, 112, 224)!important;
+          width: 90px !important;
+          left: 90px;
+          top:5px
+    }
+}
+
+@media only screen and (min-width: 361px ) and   (max-width: 768px ) {
+    .summary-card{
+        left: 120px;
+        margin-top: 0px;
+        width: 500px;
+        border: 1px solid $faintGrey;
+        border-radius: 1px;
+        background: $white 0% 0% no-repeat padding-box;   
+    }
+
+    .check-out-btn{
+        color: white !important;
+          background-color: rgb(52, 112, 224)!important;
+          width: 140px !important;
+          left: 200px;
+          top:5px
+    } 
+}

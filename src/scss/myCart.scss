@@ -14,7 +14,6 @@
   }
   
   .mycart-card {
-   
       left: -50px;
       width: 655px;
       border: 1px solid $faintGrey;
@@ -24,9 +23,8 @@
   }
 
   .book-route-links {
-      font-size: 13px;
-      margin-bottom: 5px !important;
-      margin-left: 500px;
+      font-size: 13px;   
+      margin-left: 320px;    
   }
 
   #title {
@@ -51,7 +49,7 @@
       width: 120px;
   }
 
-     .address-form1{
+ /*   .address-form1{
       left: 270px;
       top: 20px;
       width: 1055px;
@@ -59,7 +57,7 @@
       border-radius: 0.1px;
       border-color: azure;
       background: $white 0% 0% no-repeat padding-box;
-    }  
+    } */   
 
   .v-list-item {
       min-height: 25px !important;
@@ -90,3 +88,63 @@
     margin-top: -20px;
 }
   
+@media only screen and (min-width: 0px ) and (max-width: 360px ) {
+ 
+  .mycart-card {
+    left: 55px;
+    width: 300px;
+    border: 1px solid $faintGrey;
+    border-radius: 1px;
+    background: $white 0% 0% no-repeat padding-box;
+    top: -5px;
+}
+
+.full-layout {
+  max-width: 80%;
+  }
+
+.book-route-links {
+  font-size: 8px;   
+  margin-left: 65px;    
+}
+
+.cart-image {
+  height: 80px;
+  width: 60px;
+  margin-top: 2px;
+} 
+.remove-book-btn{
+  padding-left: 15px;
+}
+
+}
+
+@media only screen and (min-width: 361px ) and   (max-width: 768px ) {
+ .mycart-card {
+    left: 100px;
+    width: 500px;
+    border: 1px solid $faintGrey;
+    border-radius: 1px;
+    background: $white 0% 0% no-repeat padding-box;
+    top: -5px;
+}
+
+.full-layout {
+  max-width: 80%;
+  }
+
+.book-route-links {
+  font-size: 10px;   
+  margin-left: 170px;    
+}
+
+.cart-image {
+  height: 100px;
+  width: 80px;
+  margin-top: 2px;
+} 
+.remove-book-btn{
+  padding-left: 15px;
+}
+
+}

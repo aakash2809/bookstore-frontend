@@ -3,23 +3,23 @@
     <v-card-title> Address Details </v-card-title>
     <v-card-text>
       <v-row>
-        <v-col cols="12" sm="6" md="3">
+        <v-col>
           <v-text-field
             label="Full Name"
             v-model="fullName"
             dense
             outlined
-            class="fullName ml-10"
+            class="fullName ml-8"
             :rules="[validationRule.required]"
           ></v-text-field
         ></v-col>
-        <v-col cols="12" sm="6" md="3">
+        <v-col>
           <v-text-field
             label="Mobile Number"
             v-model="mobileNumber"
             dense
             outlined
-            class="mobileNumber"
+            class="mobileNumber mr-5"
             :rules="[validationRule.required]"
           ></v-text-field>
         </v-col>
@@ -32,13 +32,12 @@
           dense
           outlined
           rows="2"
-          row-height="20"
           class="address mr-5 ml-10"
           :rules="[validationRule.required]"
         ></v-textarea>
       </v-row>
       <v-row>
-        <v-col cols="12" sm="6" md="3">
+        <v-col>
           <v-text-field
             label="city/town"
             v-model="city"
@@ -48,13 +47,13 @@
             :rules="[validationRule.required]"
           ></v-text-field
         ></v-col>
-        <v-col cols="12" sm="6" md="3">
+        <v-col>
           <v-text-field
             label="state"
             v-model="state"
             dense
             outlined
-            class="mr-5 mob-state-field"
+            class="mr-5 ml-15 mob-state-field"
             :rules="[validationRule.required]"
           ></v-text-field>
         </v-col>

@@ -8,11 +8,19 @@
         <v-row>
           <v-layout row wrap class="mt-5">
             <v-flex xs24 md12>
-              <v-row class="mt-10">
+              <v-row class="mt-15">
                 <v-col class="mt-5 book-route-links">
-                  <router-link :to="{ path: '/dashboard' }">Home </router-link>
+                  <router-link
+                    :to="{ path: '/dashboard' }"
+                    style="text-decoration: none; color: inherit"
+                    >Home
+                  </router-link>
                   /
-                  <router-link :to="{ path: '/myCart' }">My Cart</router-link>
+                  <router-link
+                    :to="{ path: '/myCart' }"
+                    style="text-decoration: none; color: inherit"
+                    >My Cart</router-link
+                  >
                 </v-col>
               </v-row>
               <v-row>
@@ -66,7 +74,7 @@
                             >
                           </v-row>
                         </v-flex>
-                        <v-flex class="mr-5">
+                        <v-flex class="remove-book-btn mr-5">
                           <br /><br /><br /><br />
                           <v-btn class="" @click="removeItemFromCart(item)">
                             Remove
@@ -181,8 +189,9 @@ export default {
       }
     },
 
-    checkOut(book) {
-      console.log("checkout called");
+    checkOut(book, testData) {
+      console.log("checkout called", testData);
+
       if (this.$refs.addressForm.validate()) {
         console.log("this.$refs.addressForm", this.$refs.addressForm);
         console.log("ordrelist", this.orderList);
