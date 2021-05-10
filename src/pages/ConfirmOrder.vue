@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="full-layout1">
     <v-content>
       <v-row>
         <AppBar ref="appBar" />
@@ -7,7 +7,7 @@
       <v-row>
         <v-container grid-list-md text-xs-center>
           <v-layout row wrap class="mt-9">
-            <v-col>
+            <v-col class="content">
               <v-row
                 class="mt-10 ml-10 confirmation-image"
                 align="center"
@@ -18,13 +18,25 @@
                   :src="require('../assets/images/order-confirm.png')"
                 ></v-img>
               </v-row>
-              <v-row class="mt-2 ml-10" align="center" justify="center">
-                <h3>Order Placed Successfully</h3>
+              <v-row
+                row
+                wrap
+                class="mt-2 ml-10"
+                align="center"
+                justify="center"
+              >
+                <h3 class="confirmation-msg">Order Placed Successfully</h3>
               </v-row>
-              <v-row class="mt-5 ml-12" align="center" justify="center">
-                <pre>
-      hurray!!! your order is confirmed
-    the order id is #094523251 save the order id for
+              <v-row
+                row
+                wrap
+                class="desc-confirmation-msg mt-5 ml-12"
+                align="center"
+                justify="center"
+              >
+                <pre class="desc-confirmation-msg">
+         hurray!!your order is confirmed
+     the order id is #094523 save the order id for
             further communication..</pre
                 >
               </v-row>
@@ -69,9 +81,11 @@ export default {
     wishlist: "",
     items: "",
   }),
+
   components: {
     AppBar,
   },
+
   methods: {
     goToHome() {
       this.$router.push({
@@ -84,20 +98,10 @@ export default {
       });
     },
   },
-  mounted() {
-    if (this.wishlist != undefined) {
-      // const appBar = this.$refs.appBar;
-    }
-    if (this.items != undefined) {
-      // const appBar = this.$refs.appBar;
-    }
-    if (this.orderList != undefined) {
-      // const appBar = this.$refs.appBar;
-    }
-  },
+
+  mounted() {},
 };
 </script>
-
 
 <style lang="scss">
 @import "../scss/confirmOrder.scss";

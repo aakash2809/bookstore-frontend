@@ -5,10 +5,7 @@
     margin-top: 12px;
     margin-bottom: 12px;
 }
-.orderConfirmImage {
-    height: 120px;
-      width: 10%;
-  }
+
   .confirmation-image .v-responsive {
     flex:none;
   } 
@@ -41,3 +38,59 @@
     background-color: skyblue !important;
   } 
 
+@media only screen and (min-width: 0px ) and (max-width: 360px ) {
+    .full-layout1{
+      width:39%
+    }
+
+    .orderConfirmImage{
+      height: 60px;
+      width: 60px;
+      padding-top: -10px;
+      margin-top: -10px;
+   }
+
+    .desc-confirmation-msg{
+        font-size: 12px;
+        padding-left: 10px;
+    }
+
+    .content{
+      margin-left: 100px;
+    }
+
+    table {
+      margin-left:-10px;
+      border-collapse: collapse;
+      border-spacing: 2px;
+    }
+
+    table tr td{
+      border: 1px solid grey;
+      width: 180px;
+      height: 40px;
+      text-align: center;
+    }
+
+    table tr th {
+      font-weight: 200px;
+      height: 20px;
+      background-color: grey;
+    }
+
+    .continue-shopping {
+      color: white !important;
+      background-color: skyblue !important;
+      margin-left: 5px;
+      margin-top: -25px;
+    } 
+    .confirmation-msg{
+      font-size: 15px;
+    }
+  }
+
+  @media only screen and (min-width: 361px ) and  (max-width: 768px ) {
+    .content{
+      margin-left: 20px;
+    }
+  }
