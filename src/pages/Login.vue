@@ -79,7 +79,7 @@ export default {
       this.$refs.form.reset();
       if (redirectKey) {
         router.push({
-          path: "/dashBoard",
+          path: "/dashboard",
         });
       }
     },

@@ -92,7 +92,7 @@ export default {
       };
       console.log("Login details: ", data);
       userServices
-        .loginUser(data)
+        .loginAdmin(data)
         .then((res) => {
           if (res.data.success) {
             localStorage.setItem("token", res.data.token);
