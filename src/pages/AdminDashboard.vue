@@ -6,9 +6,8 @@
     sort-by="calories"
     class="elevation-1"
   >
-    <BaseAppBar></BaseAppBar>
+    <!--  <BaseAppBar></BaseAppBar> -->
     <template v-slot:top>
-      <br />
       <v-toolbar flat color="#A03037">
         <v-toolbar-title>BookStore</v-toolbar-title>
         <v-divider class="mx-4" inset vertical></v-divider>
@@ -19,11 +18,11 @@
               Add Book
             </v-btn>
           </template>
+
           <v-card>
             <v-card-title>
               <span class="headline">{{ formTitle }}</span>
             </v-card-title>
-
             <v-card-text>
               <v-container>
                 <v-row>
@@ -55,6 +54,12 @@
                     <v-text-field
                       v-model="editedItem.description"
                       label="description"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" sm="6" md="4">
+                    <v-text-field
+                      v-model="editedItem.image"
+                      label="image"
                     ></v-text-field>
                   </v-col>
                 </v-row>
@@ -125,17 +130,17 @@ export default {
     editedItem: {
       author: "",
       title: "",
-      quantity: 0,
-      price: 0,
+      quantity: null,
+      price: null,
       description: "",
       image: "",
     },
     defaultItem: {
       author: "",
       title: "",
-      quantity: 0,
-      price: 0,
-      description: 0,
+      quantity: null,
+      price: null,
+      description: "",
       image: "",
     },
   }),
@@ -183,14 +188,24 @@ export default {
     },
 
     deleteItem(item) {
+      console.log("data to be deleted", item);
       this.editedIndex = this.books.indexOf(item);
       this.editedItem = Object.assign({}, item);
       this.dialogDelete = true;
+      console.log("data to deleted", this.books[this.editedIndex]._id);
     },
 
     deleteItemConfirm() {
-      this.books.splice(this.editedIndex, 1);
-      this.closeDelete();
+      user
+        .deleteBook(this.books[this.editedIndex]._id)
+        .then((response) => {
+          console.log("delete", response);
+          this.books.splice(this.editedIndex, 1);
+          this.closeDelete();
+        })
+        .catch(() => {
+          console.log("got error");
+        });
     },
 
     close() {
@@ -210,12 +225,20 @@ export default {
     },
 
     save() {
-      if (this.editedIndex > -1) {
-        Object.assign(this.books[this.editedIndex], this.editedItem);
-      } else {
-        this.books.push(this.editedItem);
-      }
-      this.close();
+      user
+        .addBook(this.editedItem)
+        .then((response) => {
+          console.log("data save", response);
+          if (this.editedIndex > -1) {
+            Object.assign(this.books[this.editedIndex], this.editedItem);
+          } else {
+            this.books.push(this.editedItem);
+          }
+          this.close();
+        })
+        .catch(() => {
+          console.log("got error");
+        });
     },
   },
 };

@@ -33,6 +33,15 @@ export default {
 
     removeItemFromCart(bookId) {
         return axios.put(`/book/removeFromBag/${bookId}`);
+    },
+
+    addBook(book) {
+        return axios.post("/book", book);
+    },
+
+    deleteBook(bookId) {
+        console.log("bookId", bookId);
+        return axios.delete(`/deleteBook/${bookId}`);
     }
 }
 
