@@ -1,15 +1,9 @@
 
 <template>
-  <v-data-table
-    :headers="headers"
-    :items="books"
-    sort-by="calories"
-    class="elevation-1"
-  >
-    <!--  <BaseAppBar></BaseAppBar> -->
+  <v-data-table :headers="headers" :items="books" sort-by="" class="a">
     <template v-slot:top>
       <v-toolbar flat color="#A03037">
-        <v-toolbar-title>BookStore</v-toolbar-title>
+        <v-toolbar-title> <h3>BookStore</h3> </v-toolbar-title>
         <v-divider class="mx-4" inset vertical></v-divider>
         <v-spacer></v-spacer>
         <v-dialog v-model="dialog" max-width="500px">
@@ -21,11 +15,12 @@
 
           <v-card>
             <v-card-title>
-              <span class="headline">{{ formTitle }}</span>
+              <span class="headline" justify="center">{{ formTitle }}</span>
             </v-card-title>
             <v-card-text>
               <v-container>
-                <v-row>
+                <v-form ref="form">
+                  <!--    <v-row>
                   <v-col cols="12" sm="6" md="4">
                     <v-text-field
                       v-model="editedItem.author"
@@ -62,14 +57,77 @@
                       label="image"
                     ></v-text-field>
                   </v-col>
-                </v-row>
+                </v-row> -->
+
+                  <v-row>
+                    <v-text-field
+                      v-model="editedItem.author"
+                      label="Autor"
+                      cols="12"
+                      sm="6"
+                      md="4"
+                      class="b"
+                      :rules="[authorRules.required]"
+                    ></v-text-field
+                  ></v-row>
+                  <v-row
+                    ><v-text-field
+                      v-model="editedItem.title"
+                      label="Title"
+                      cols="12"
+                      sm="6"
+                      md="4"
+                      :rules="[titleRules.required]"
+                    ></v-text-field
+                  ></v-row>
+                  <v-row>
+                    <v-text-field
+                      v-model="editedItem.quantity"
+                      label="Quantity"
+                      cols="12"
+                      sm="6"
+                      md="4"
+                      :rules="[quantityRules.required, quantityRules.regex]"
+                    ></v-text-field
+                  ></v-row>
+                  <v-row>
+                    <v-text-field
+                      v-model="editedItem.price"
+                      label="Price"
+                      cols="12"
+                      sm="6"
+                      md="4"
+                      :rules="[priceRules.required, priceRules.regex]"
+                    ></v-text-field
+                  ></v-row>
+                  <v-row>
+                    <v-text-field
+                      v-model="editedItem.description"
+                      label="Description"
+                      cols="12"
+                      sm="6"
+                      md="4"
+                      :rules="[descriptionRules.required]"
+                    ></v-text-field
+                  ></v-row>
+                  <v-row
+                    ><v-text-field
+                      v-model="editedItem.image"
+                      label="Image"
+                      cols="12"
+                      sm="6"
+                      md="4"
+                      :rules="[imageRules.required]"
+                    ></v-text-field
+                  ></v-row>
+                </v-form>
               </v-container>
             </v-card-text>
 
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="blue darken-1" text @click="close"> Cancel </v-btn>
-              <v-btn color="blue darken-1" text @click="save"> Save </v-btn>
+              <v-btn color="blue darken-1" text @click="validate"> Save </v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -103,20 +161,36 @@
 </template>
 
 <script>
-//import BaseAppBar from "../components/BaseAppBar";
 import user from "../services/user";
+//import Snackbar from "../components/SnackBarNotify";
 export default {
   data: () => ({
     dialog: false,
     dialogDelete: false,
     Components: {},
+    timeout: 3500,
+    authorRules: {
+      required: (v) => !!v || "Author is required",
+    },
+    titleRules: {
+      required: (v) => !!v || "Title is required",
+    },
+    quantityRules: {
+      required: (v) => !!v || "Quantity is required",
+      regex: (v) => /^[0-9]/.test(v) || "Quantity must be a number",
+    },
+    priceRules: {
+      required: (v) => !!v || "Price is required",
+      regex: (v) => /^[0-9]/.test(v) || "Price must be a number",
+    },
+    descriptionRules: {
+      required: (v) => !!v || "Description is required",
+    },
+    imageRules: {
+      required: (v) => !!v || "Image is required",
+    },
+
     headers: [
-      {
-        text: "BookId",
-        align: "start",
-        sortable: false,
-        value: "_id",
-      },
       { text: "Autor", value: "author" },
       { text: "Title", value: "title" },
       { text: "Quantity", value: "quantity" },
@@ -165,6 +239,12 @@ export default {
   },
 
   methods: {
+    validate() {
+      console.log("validate called", this.$refs.form.validate());
+      if (this.$refs.form.validate()) {
+        this.save();
+      }
+    },
     initialize() {
       user
         .fetchAllBooks()
@@ -188,11 +268,9 @@ export default {
     },
 
     deleteItem(item) {
-      console.log("data to be deleted", item);
       this.editedIndex = this.books.indexOf(item);
       this.editedItem = Object.assign({}, item);
       this.dialogDelete = true;
-      console.log("data to deleted", this.books[this.editedIndex]._id);
     },
 
     deleteItemConfirm() {
@@ -243,3 +321,43 @@ export default {
   },
 };
 </script>
+
+<style lang ="scss" scoped>
+h3 {
+  font-size: 20px !important;
+  color: white;
+}
+
+.headline {
+  margin-left: 160px;
+  /* justify-content: center; */
+}
+/* * {
+  font-size: 15px !important;
+} */
+.v-data-table td {
+  background-color: cornflowerblue;
+}
+
+/* .theme--light.v-data-table > .v-data-table__wrapper > table > thead > tr > th {
+  color: #f5f5f5 !important;
+} */
+
+/* {
+  font-size: 2px !important;
+  font-weight: 600;
+} */
+/* .v-data-table td {
+  border-bottom: none !important;
+}
+
+
+.v-data-table > .v-data-table__wrapper > table > thead > tr > th {
+  color: white;
+  font-size: 17px;
+  background-color: rgb(52, 112, 224) !important;
+} */
+.v-data-table td {
+  background-color: blue !important;
+}
+</style>
