@@ -8,7 +8,13 @@
         <v-spacer></v-spacer>
         <v-dialog v-model="dialog" max-width="500px">
           <template v-slot:activator="{ on, attrs }">
-            <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on">
+            <v-btn
+              color="primary"
+              dark
+              class="add_book_btn mb-2"
+              v-bind="attrs"
+              v-on="on"
+            >
               Add Book
             </v-btn>
           </template>
@@ -20,45 +26,6 @@
             <v-card-text>
               <v-container>
                 <v-form ref="form">
-                  <!--    <v-row>
-                  <v-col cols="12" sm="6" md="4">
-                    <v-text-field
-                      v-model="editedItem.author"
-                      label="autor"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col cols="12" sm="6" md="4">
-                    <v-text-field
-                      v-model="editedItem.title"
-                      label="title"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col cols="12" sm="6" md="4">
-                    <v-text-field
-                      v-model="editedItem.quantity"
-                      label="quantity"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col cols="12" sm="6" md="4">
-                    <v-text-field
-                      v-model="editedItem.price"
-                      label="price"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col cols="12" sm="6" md="4">
-                    <v-text-field
-                      v-model="editedItem.description"
-                      label="description"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col cols="12" sm="6" md="4">
-                    <v-text-field
-                      v-model="editedItem.image"
-                      label="image"
-                    ></v-text-field>
-                  </v-col>
-                </v-row> -->
-
                   <v-row>
                     <v-text-field
                       v-model="editedItem.author"
@@ -66,7 +33,7 @@
                       cols="12"
                       sm="6"
                       md="4"
-                      class="b"
+                      class="author_name"
                       :rules="[authorRules.required]"
                     ></v-text-field
                   ></v-row>
@@ -77,6 +44,7 @@
                       cols="12"
                       sm="6"
                       md="4"
+                      class="book_title"
                       :rules="[titleRules.required]"
                     ></v-text-field
                   ></v-row>
@@ -87,6 +55,7 @@
                       cols="12"
                       sm="6"
                       md="4"
+                      class="book_quantity"
                       :rules="[quantityRules.required, quantityRules.regex]"
                     ></v-text-field
                   ></v-row>
@@ -97,6 +66,7 @@
                       cols="12"
                       sm="6"
                       md="4"
+                      class="book_price"
                       :rules="[priceRules.required, priceRules.regex]"
                     ></v-text-field
                   ></v-row>
@@ -107,6 +77,7 @@
                       cols="12"
                       sm="6"
                       md="4"
+                      class="description"
                       :rules="[descriptionRules.required]"
                     ></v-text-field
                   ></v-row>
@@ -117,13 +88,14 @@
                       cols="12"
                       sm="6"
                       md="4"
+                      class="book_image"
                       :rules="[imageRules.required]"
                     ></v-text-field
                   ></v-row>
                 </v-form>
               </v-container>
             </v-card-text>
-
+            <Snackbar ref="snack"> </Snackbar>
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="blue darken-1" text @click="close"> Cancel </v-btn>
@@ -133,7 +105,7 @@
         </v-dialog>
         <v-dialog v-model="dialogDelete" max-width="500px">
           <v-card>
-            <v-card-title class="headline"
+            <v-card-title class="headline1"
               >Are you sure you want to delete this item?</v-card-title
             >
             <v-card-actions>
@@ -162,12 +134,13 @@
 
 <script>
 import user from "../services/user";
-//import Snackbar from "../components/SnackBarNotify";
+import Snackbar from "../components/SnackBarNotify";
+
 export default {
   data: () => ({
     dialog: false,
     dialogDelete: false,
-    Components: {},
+    Components: { Snackbar },
     timeout: 3500,
     authorRules: {
       required: (v) => !!v || "Author is required",
@@ -245,6 +218,7 @@ export default {
         this.save();
       }
     },
+
     initialize() {
       user
         .fetchAllBooks()
@@ -303,61 +277,37 @@ export default {
     },
 
     save() {
-      user
-        .addBook(this.editedItem)
-        .then((response) => {
-          console.log("data save", response);
+      try {
+        user.addBook(this.editedItem).then((result) => {
+          const snackbarData = {
+            text: `${result.data.message}`,
+            timeout: this.timeout,
+          };
+          console.log("s", this.$refs);
+
+          console.log("t", snackbarData);
+          //this.$refs.snackbar.setSnackbar(snackbarData);
           if (this.editedIndex > -1) {
             Object.assign(this.books[this.editedIndex], this.editedItem);
           } else {
             this.books.push(this.editedItem);
           }
           this.close();
-        })
-        .catch(() => {
-          console.log("got error");
+
+          //this.displayAllBooks();
         });
+      } catch (error) {
+        const snackbarData = {
+          text: error,
+          timeout: this.timeout,
+        };
+        this.$refs.snack.setSnackbar(snackbarData);
+      }
     },
   },
 };
 </script>
 
 <style lang ="scss" scoped>
-h3 {
-  font-size: 20px !important;
-  color: white;
-}
-
-.headline {
-  margin-left: 160px;
-  /* justify-content: center; */
-}
-/* * {
-  font-size: 15px !important;
-} */
-.v-data-table td {
-  background-color: cornflowerblue;
-}
-
-/* .theme--light.v-data-table > .v-data-table__wrapper > table > thead > tr > th {
-  color: #f5f5f5 !important;
-} */
-
-/* {
-  font-size: 2px !important;
-  font-weight: 600;
-} */
-/* .v-data-table td {
-  border-bottom: none !important;
-}
-
-
-.v-data-table > .v-data-table__wrapper > table > thead > tr > th {
-  color: white;
-  font-size: 17px;
-  background-color: rgb(52, 112, 224) !important;
-} */
-.v-data-table td {
-  background-color: blue !important;
-}
+@import "../scss/adminDashboard.scss";
 </style>
