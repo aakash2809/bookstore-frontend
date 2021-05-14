@@ -77,12 +77,11 @@
                       cols="12"
                       sm="6"
                       md="4"
-                      class="description"
                       :rules="[descriptionRules.required]"
                     ></v-text-field
                   ></v-row>
                   <v-row
-                    ><v-text-field
+                    ><!-- <v-text-field
                       v-model="editedItem.image"
                       label="Image"
                       cols="12"
@@ -91,11 +90,22 @@
                       class="book_image"
                       :rules="[imageRules.required]"
                     ></v-text-field
-                  ></v-row>
+                  > -->
+                    <template>
+                      <v-file-input
+                        accept="image/*"
+                        label="FileInput"
+                        enctype="multipart/form-data"
+                        class="book_image"
+                        v-model="editedItem.image"
+                      ></v-file-input>
+                    </template>
+                  </v-row>
+                  <Snackbar ref="snack"> </Snackbar>
                 </v-form>
               </v-container>
             </v-card-text>
-            <Snackbar ref="snack"> </Snackbar>
+
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="blue darken-1" text @click="close"> Cancel </v-btn>
@@ -278,14 +288,23 @@ export default {
 
     save() {
       try {
-        user.addBook(this.editedItem).then((result) => {
+        console.log("check for image data", this.editedItem.image);
+        const data = {
+          author: this.editedItem.author,
+          title: this.editedItem.title,
+          price: this.editedItem.price,
+          quantity: this.editedItem.quantity,
+          description: this.editedItem.description,
+          image: this.editedItem.image,
+        };
+        user.addBook(data).then((result) => {
           const snackbarData = {
             text: `${result.data.message}`,
             timeout: this.timeout,
           };
-          console.log("s", this.$refs);
+          console.log("s", snackbarData);
 
-          console.log("t", snackbarData);
+          console.log("t", result.data);
           //this.$refs.snackbar.setSnackbar(snackbarData);
           if (this.editedIndex > -1) {
             Object.assign(this.books[this.editedIndex], this.editedItem);
@@ -293,8 +312,6 @@ export default {
             this.books.push(this.editedItem);
           }
           this.close();
-
-          //this.displayAllBooks();
         });
       } catch (error) {
         const snackbarData = {
