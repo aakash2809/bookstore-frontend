@@ -1,6 +1,6 @@
 /*************************************************************************
- * @file    : login.spec.js
- * @purpose : to test Login component
+ * @file    : addressDetail.spec.js
+ * @purpose : to test AddressDetails component
  * @author  :  Aakash Rajak<aakashrajak2809@gmail.com>
  **************************************************************************/
 
