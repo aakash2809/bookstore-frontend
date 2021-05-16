@@ -14,8 +14,7 @@ import SearchResult from '@/pages/SearchResult';
 import RootPage from '@/pages/RootPage';
 
 Vue.use(Router);
-
-export default new Router({
+let router = new Router({
 	routes: [
 		{
 			path: '/',
@@ -40,7 +39,15 @@ export default new Router({
 		{
 			path: '/adminDashboard',
 			name: AdminDashboard,
-			component: AdminDashboard
+			component: AdminDashboard,
+			beforeEnter: (to, from, next) => {
+
+				if (to.path !== '/admin') next('/admin')
+				else {
+					console.log("else is executing");
+					return next();
+				}
+			}
 		},
 		{
 			path: '/forgotPassword',
@@ -80,4 +87,29 @@ export default new Router({
 	],
 	mode: 'history'
 });
+
+//const openRoutes = ['DashBoard', 'ForgotPasswordForm', 'RootPage', 'SearchResult', 'AddressDetails', 'ConfirmOrder', 'Mycart',];
+
+// router.beforeEach((to, from, next) => {
+
+// 	if (to.name !== 'RegistrationOrLoginForAdmin') next({ name: 'RegistrationOrLoginForAdmin' })
+// 	else next()
+// 	/* let a = 9;
+// 	let b = 3;
+// 	console.log(openRoutes.includes('DashBoard'));
+// 	console.log(window.token); */
+
+// 	/* if (openRoutes.includes('DashBoard')) {
+// 		next();
+// 	} else if (a == b) {
+// 		console.log("elseif")
+// 		next()
+// 	}
+// 	else {
+// 		console.log("else");
+// 		next('/admin')
+// 	} */
+// })
+
+export default router;
 
