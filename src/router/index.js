@@ -12,6 +12,7 @@ import ConfirmOrder from '@/pages/ConfirmOrder';
 import AddressDetails from '@/components/AddressDetails';
 import SearchResult from '@/pages/SearchResult';
 import RootPage from '@/pages/RootPage';
+import PageNotFound from '@/pages/PageNotFound.vue';
 
 Vue.use(Router);
 let router = new Router({
@@ -82,6 +83,7 @@ let router = new Router({
 			name: SearchResult,
 			component: SearchResult
 		},
+		{ path: "*", component: PageNotFound }
 	],
 	mode: 'history'
 });
