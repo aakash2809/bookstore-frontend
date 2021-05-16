@@ -44,7 +44,7 @@ import router from "../router";
 import SnackbarNotify from "../components/SnackBarNotify";
 
 export default {
-  name: "Login",
+  name: "AdminLogin",
 
   data: () => ({
     form: {
@@ -78,8 +78,9 @@ export default {
     clearForm(redirectKey) {
       this.$refs.form.reset();
       if (redirectKey) {
+        /*   <router-link to="/dashboard"></router-link>; */
         router.push({
-          path: "/dashBoard",
+          path: "/adminDashboard",
         });
       }
     },
