@@ -25,7 +25,7 @@
             </v-card-title>
             <v-card-text>
               <v-container>
-                <v-form ref="form">
+                <v-form ref="form" enctype="multipart/form-data">
                   <v-row>
                     <v-text-field
                       v-model="editedItem.author"
@@ -89,16 +89,23 @@
                       md="4"
                       class="book_image"
                       :rules="[imageRules.required]"
-                    ></v-text-field
-                  > -->
-                    <template>
+                    ></v-text-field> -->
+
+                    <!-- <template>
                       <v-file-input
                         accept="image/*"
                         label="FileInput"
-                        enctype="multipart/form-data"
                         class="book_image"
+                        enctype="multipart/form-data"
                         v-model="editedItem.image"
+                        :rules="[imageRules.required]"
                       ></v-file-input>
+                    </template> -->
+
+                    <template>
+                      <div class="image-to-upload">
+                        <input type="file" @change="onFileSelected" />
+                      </div>
                     </template>
                   </v-row>
                   <Snackbar ref="snack"> </Snackbar>
@@ -222,6 +229,10 @@ export default {
   },
 
   methods: {
+    onFileSelected(event) {
+      console.log("event", event);
+      this.editedItem.image = event.target.files[0];
+    },
     validate() {
       console.log("validate called", this.$refs.form.validate());
       if (this.$refs.form.validate()) {
@@ -275,6 +286,7 @@ export default {
       this.$nextTick(() => {
         this.editedItem = Object.assign({}, this.defaultItem);
         this.editedIndex = -1;
+        this.$refs.form.reset();
       });
     },
 
@@ -288,14 +300,33 @@ export default {
 
     save() {
       try {
-        console.log("check for image data", this.editedItem.image);
+        console.log("check for data", this.editedItem);
+        /*  const FormData = require("form-data");
+        const formdata = new FormData();
+        formdata.append("author", this.editedItem.author);
+        formdata.append("title", this.editedItem.title);
+        formdata.append("price", this.editedItem.price);
+        formdata.append("quantity", this.editedItem.quantity);
+        formdata.append("description", this.editedItem.description);
+        formdata.append("image", this.editedItem.image);
+        const data = {
+          data: formdata,
+          headers: { "Content-Type": "multipart/form-data" },
+        }; */
+
         const data = {
           author: this.editedItem.author,
           title: this.editedItem.title,
           price: this.editedItem.price,
           quantity: this.editedItem.quantity,
           description: this.editedItem.description,
-          image: this.editedItem.image,
+          image: this.editedItem.image.name,
+          /*  image: {
+            name: this.editedItem.image.name,
+            lastModifiedDate: this.editedItem.image.lastModifiedDate,
+            size: this.editedItem.image.size,
+            type: this.editedItem.image.type,
+          }, */
         };
         user.addBook(data).then((result) => {
           const snackbarData = {
