@@ -161,9 +161,11 @@ export default {
     timeout: 3500,
     authorRules: {
       required: (v) => !!v || "Author is required",
+      regex: (v) => /^[a-zA-Z]/.test(v) || "Author can not be a Number",
     },
     titleRules: {
       required: (v) => !!v || "Title is required",
+      regex: (v) => /^[a-zA-Z]/.test(v) || "Title can not be a Number",
     },
     quantityRules: {
       required: (v) => !!v || "Quantity is required",

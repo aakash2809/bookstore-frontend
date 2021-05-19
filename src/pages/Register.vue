@@ -6,19 +6,19 @@
       dense
       id="first-name"
       v-model="form.firstName"
-      label="firstName"
+      label="FirstName"
       autocomplete="off"
-      :rules="[nameRules.required, nameRules.name_length]"
+      :rules="[nameRules.required, nameRules.name_length,nameRules.regex]"
     ></v-text-field>
     <v-text-field
       outlined
       dense
       id="last-name"
       v-model="form.lastName"
-      label="lastName"
+      label="LastName"
       required
       autocomplete="off"
-      :rules="[nameRules.required, nameRules.name_length]"
+      :rules="[nameRules.required, nameRules.name_length,nameRules.regex]"
     ></v-text-field>
     <v-text-field
       outlined
@@ -37,13 +37,13 @@
       :type="showPassword ? 'text' : 'password'"
       id="password"
       v-model="form.password"
-      label="password"
+      label="Password"
       :rules="[passwordRules.required, passwordRules.minLength]"
     ></v-text-field>
     <v-text-field
       outlined
       dense
-      label="confirm Password"
+      label="Confirm Password"
       :append-icon="showCPassword ? 'mdi-eye' : 'mdi-eye-off'"
       @click:append="() => (showCPassword = !showCPassword)"
       :type="showCPassword ? 'text' : 'password'"
@@ -75,9 +75,10 @@ export default {
     sending: false,
 
     nameRules: {
-      required: (v) => !!v || "field is required",
+      required: (v) => !!v || "Name is required",
       name_length: (v) =>
-        (v && v.length <= 10) || "field must be less than 10 characters",
+        (v && v.length <= 10) || "Name must be less than 10 characters",
+        regex: (v) => /^[a-zA-Z]/.test(v) || "Name can not be a Number",
     },
 
     emailRules: {
@@ -87,7 +88,7 @@ export default {
 
     passwordRules: {
       required: (v) => !!v || "Name is required",
-      minLength: (v) => (v && v.length > 7) || "password must be 8 characters",
+      minLength: (v) => (v && v.length > 7) || "Password must be 8 characters",
     },
   }),
 
@@ -130,7 +131,7 @@ export default {
           }
         })
         .catch(() => {
-          this.$refs.snackbar._data.text = `internal server error`;
+          this.$refs.snackbar._data.text = `Internal server error`;
           this.$refs.snackbar._data.show = true;
           this.clearForm();
         });
