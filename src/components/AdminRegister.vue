@@ -51,7 +51,14 @@
       v-model="form.cpassword"
       :rules="[passwordRules.required, passwordRules.minLength]"
     ></v-text-field>
-    <button x-large block class="button">SignUp</button>
+    <button
+      x-large
+      block
+      class="button"
+      v-bind:class="[isActivate ? 'blue' : 'red']"
+    >
+      SignUp
+    </button>
     <SnackbarNotify ref="snackbar" />
   </v-form>
 </template>
@@ -59,9 +66,10 @@
 <script>
 import userServices from "../services/user";
 import SnackbarNotify from "../components/SnackBarNotify";
-
 export default {
   data: () => ({
+    //isActive: this.$refs.form.validate(),
+    isActivate: false,
     form: {
       firstName: null,
       lastName: null,
@@ -69,45 +77,48 @@ export default {
       password: null,
       cpassword: null,
     },
-
     showPassword: false,
     showCPassword: false,
     sending: false,
-
     nameRules: {
-      required: (v) => !!v || "Field is required",
+      required: (v) => !!v || "Name is required",
       regex: (v) => /^[a-zA-Z]/.test(v) || "Name can not be a Number",
       name_length: (v) =>
         (v && v.length <= 10) || "Field must be less than 10 characters",
     },
-
     emailRules: {
       required: (v) => !!v || "E-mail is required",
       email_validation: (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
     },
-
     passwordRules: {
       required: (v) => !!v || "Password is required",
       minLength: (v) => (v && v.length > 7) || "Password must be 8 characters",
     },
   }),
-
   components: {
     SnackbarNotify,
   },
+  watch: {
+    isActivate() {
+      this.isActivate = !this.isActivate;
+    },
+  },
 
+  mounted() {
+    (this.isActivate = this.$refs.form.validate()),
+      console.log("mounted resgister", this.$refs.form.validate());
+  },
   methods: {
     validate() {
-      console.log("valididate", this.$refs.form.validate());
+      console.log("valididate", this.isActivate);
+      this.isActivate = !this.isActivate;
       if (this.$refs.form.validate()) {
         this.saveUser();
       }
     },
-
     clearForm() {
       this.$refs.form.reset();
     },
-
     saveUser() {
       this.sending = true;
       let data = {
@@ -117,7 +128,6 @@ export default {
         password: this.form.password,
         confirmPassword: this.form.cpassword,
       };
-
       userServices
         .registerAdmin(data)
         .then((res) => {
