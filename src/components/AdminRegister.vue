@@ -55,7 +55,7 @@
       x-large
       block
       class="button"
-      v-bind:class="[isActivate ? 'blue' : 'red']"
+      v-bind:class="[isActivate ? 'brown' : 'lightBrown']"
     >
       SignUp
     </button>
@@ -98,26 +98,27 @@ export default {
   components: {
     SnackbarNotify,
   },
+
   watch: {
     isActivate() {
-      this.isActivate = !this.isActivate;
+      console.log("aaakash");
+      // this.isActivate = this.isActivate;
     },
   },
 
-  mounted() {
-    (this.isActivate = this.$refs.form.validate()),
-      console.log("mounted resgister", this.$refs.form.validate());
-  },
   methods: {
     validate() {
       console.log("valididate", this.isActivate);
-      this.isActivate = !this.isActivate;
+      //this.isActivate = !this.isActivate;
       if (this.$refs.form.validate()) {
+        this.isActivate = true;
         this.saveUser();
       }
     },
     clearForm() {
+      setTimeout(function () {}, 1000);
       this.$refs.form.reset();
+      //this.isActivate = false;
     },
     saveUser() {
       this.sending = true;
@@ -150,6 +151,6 @@ export default {
   },
 };
 </script>
-<style lang = "scss" scoped>
+<style lang = "scss">
 @import "../scss/register.scss";
 </style>
