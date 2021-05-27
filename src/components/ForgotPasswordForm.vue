@@ -34,6 +34,7 @@ import router from "../router";
 
 export default {
   name: "ForgotPassword",
+
   data: () => ({
     form: {
       email: null,
@@ -43,6 +44,7 @@ export default {
       email_validation: (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
     },
   }),
+
   components: {
     SnackbarNotify,
   },
@@ -71,11 +73,9 @@ export default {
       let data = {
         email: this.form.email,
       };
-      console.log("forgot details: ", data);
       userServices
         .forgotPassword(data)
         .then((res) => {
-          console.log("response", res.data);
           if (res.data.success) {
             this.$refs.snackbar._data.text = `${res.data.message}`;
             this.$refs.snackbar._data.show = true;
@@ -86,11 +86,10 @@ export default {
             this.clearForm(res.data.success);
           }
         })
-        .catch((error) => {
+        .catch(() => {
           this.$refs.snackbar._data.text = `internal server error`;
           this.$refs.snackbar._data.show = true;
           this.clearForm(false);
-          console.log(error);
         });
     },
   },
