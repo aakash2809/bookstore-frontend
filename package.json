@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test": "jest /tests/unit/adminDashboard",
+    "test": "jest /",
     "lint": "eslint ./",
     "lint:fix": "eslint --fix --ext .js,.jsx ."
   },
