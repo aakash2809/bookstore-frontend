@@ -17,11 +17,10 @@ describe('Books.vue', () => {
     });
 
     it('check if text Books render', () => {
-        console.log(wrapper.text())
         expect(wrapper.text()).toContain('Books')
     })
 
-    it('has data', () => {
+    it('ifComponentHasData_shouldReturn_function', () => {
         expect(typeof Books.data).toBe('function')
     })
 

@@ -1,6 +1,6 @@
 /*************************************************************************
  * @file    : register.spec.js
- * @purpose : to test register component
+ * @purpose : to test Register component
  * @author  :  Aakash Rajak<aakashrajak2809@gmail.com>
  **************************************************************************/
 import { createLocalVue, shallowMount } from '@vue/test-utils';
@@ -34,7 +34,6 @@ describe('Register.vue', () => {
         expect(wrapper.find('#last-name').exists()).toBe(true)
     });
 
-
     it('whenExistingIDPass_shouldReturn_true', () => {
         expect(wrapper.find('#email').exists()).toBe(true)
     });
@@ -46,7 +45,6 @@ describe('Register.vue', () => {
     it('whenExistingIDPass_shouldReturn_true', () => {
         expect(wrapper.find('#cpassword').exists()).toBe(true)
     });
-
 });
 
 

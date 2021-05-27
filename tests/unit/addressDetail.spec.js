@@ -13,9 +13,7 @@ describe('AddressDetails.vue', () => {
   beforeEach(() => {
     const localVue = createLocalVue();
     localVue.use(Vuetify);
-
     wrapper = shallowMount(AddressDetails, localVue);
-
   });
 
   it('renders a vue instance', () => {
