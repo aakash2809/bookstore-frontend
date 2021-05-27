@@ -21,16 +21,16 @@ describe('AdminDashboard.vue', () => {
     });
 
     it('ifComponentHasData_shouldReturn_function', () => {
-        expect(typeof AdminDashboard.data).toBe('function')
-    })
+        expect(typeof AdminDashboard.data).toBe('function');
+    });
 
     it('ifComponentHasMethods_shouldReturn_object', () => {
-        expect(typeof AdminDashboard.methods).toBe('object')
-    })
+        expect(typeof AdminDashboard.methods).toBe('object');
+    });
 
     it('ifComponentHasComputed_shouldReturn_object', () => {
-        expect(typeof AdminDashboard.computed).toBe('object')
-    })
+        expect(typeof AdminDashboard.computed).toBe('object');
+    });
 
     it('whenExistingclassNamePass_shouldReturn_true', () => {
         console.log(wrapper.find('.add_book_btn').exists());

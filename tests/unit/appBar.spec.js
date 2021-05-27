@@ -23,14 +23,14 @@ describe('AppBar.vue', () => {
     });
 
     it('whenExistingclassNamePass_shouldReturn_true', () => {
-        expect(wrapper.find('.main-bar').exists()).toBe(true)
+        expect(wrapper.find('.main-bar').exists()).toBe(true);
     });
 
     it('whenExistingclassNamePass_shouldReturn_true', () => {
-        expect(wrapper.find('.book-icon').exists()).toBe(true)
+        expect(wrapper.find('.book-icon').exists()).toBe(true);
     });
 
     it('whenExistingIdPass_shouldReturn_true', () => {
-        expect(wrapper.find('#top-search-bar').exists()).toBe(true)
+        expect(wrapper.find('#top-search-bar').exists()).toBe(true);
     });
 });

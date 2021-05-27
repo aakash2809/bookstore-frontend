@@ -42,7 +42,7 @@ let router = new Router({
 			name: AdminDashboard,
 			component: AdminDashboard,
 			beforeEnter: (to, from, next) => {
-				if (from.path !== '/admin') next('/admin')
+				if (from.path !== '/admin') next('/admin');
 				else {
 					return next();
 				}
@@ -83,7 +83,7 @@ let router = new Router({
 			name: SearchResult,
 			component: SearchResult
 		},
-		{ path: "*", component: PageNotFound }
+		{ path: '*', component: PageNotFound }
 	],
 	mode: 'history'
 });

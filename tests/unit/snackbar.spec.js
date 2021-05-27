@@ -16,7 +16,7 @@ describe('snackbar.vue', () => {
     beforeEach(() => {
         wrapper = shallowMount(snackbar, {
             localVue,
-        })
+        });
     });
 
     it('mounts and renders', () => {

@@ -23,10 +23,10 @@ describe('BaseAppBarr.vue', () => {
     });
 
     it('whenExistingclassNamePass_shouldReturn_true', () => {
-        expect(wrapper.find('.main-bar').exists()).toBe(true)
+        expect(wrapper.find('.main-bar').exists()).toBe(true);
     });
 
     it('whenExistingclassNamePass_shouldReturn_true', () => {
-        expect(wrapper.find('.book-icon').exists()).toBe(true)
+        expect(wrapper.find('.book-icon').exists()).toBe(true);
     });
 });

@@ -21,36 +21,36 @@ describe('AddressDetails.vue', () => {
   });
 
   it('ifComponentHasData_shouldReturn_function', () => {
-    expect(typeof AddressDetails.data).toBe('function')
-  })
+    expect(typeof AddressDetails.data).toBe('function');
+  });
 
   it('ifComponentHasMethods_shouldReturn_object', () => {
-    expect(typeof AddressDetails.methods).toBe('object')
-  })
+    expect(typeof AddressDetails.methods).toBe('object');
+  });
 
   it('WhenGiveFullNameIsEmpity_shouldReturn_error', () => {
-    wrapper.setData({ fullName: '' })
-    expect(wrapper.vm.fullName).toBe("");
-  })
-
-  it('whenExistingclassNamePass_shouldReturn_true', () => {
-    expect(wrapper.find('.fullName').exists()).toBe(true)
+    wrapper.setData({ fullName: '' });
+    expect(wrapper.vm.fullName).toBe('');
   });
 
   it('whenExistingclassNamePass_shouldReturn_true', () => {
-    expect(wrapper.find('.city').exists()).toBe(true)
+    expect(wrapper.find('.fullName').exists()).toBe(true);
   });
 
   it('whenExistingclassNamePass_shouldReturn_true', () => {
-    expect(wrapper.find('.mob-state-field').exists()).toBe(true)
+    expect(wrapper.find('.city').exists()).toBe(true);
   });
 
   it('whenExistingclassNamePass_shouldReturn_true', () => {
-    expect(wrapper.find('.mobileNumber').exists()).toBe(true)
+    expect(wrapper.find('.mob-state-field').exists()).toBe(true);
   });
 
   it('whenExistingclassNamePass_shouldReturn_true', () => {
-    expect(wrapper.find('.address').exists()).toBe(true)
+    expect(wrapper.find('.mobileNumber').exists()).toBe(true);
+  });
+
+  it('whenExistingclassNamePass_shouldReturn_true', () => {
+    expect(wrapper.find('.address').exists()).toBe(true);
   });
 });
 

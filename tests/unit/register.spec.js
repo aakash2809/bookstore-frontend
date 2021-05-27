@@ -23,27 +23,27 @@ describe('Register.vue', () => {
     });
 
     it('whenExistingClassNamePass_shouldReturn_true', () => {
-        expect(wrapper.find('.button').exists()).toBe(true)
+        expect(wrapper.find('.button').exists()).toBe(true);
     });
 
     it('whenExistingIDPass_shouldReturn_true', () => {
-        expect(wrapper.find('#first-name').exists()).toBe(true)
+        expect(wrapper.find('#first-name').exists()).toBe(true);
     });
 
     it('whenExistingIDPass_shouldReturn_true', () => {
-        expect(wrapper.find('#last-name').exists()).toBe(true)
+        expect(wrapper.find('#last-name').exists()).toBe(true);
     });
 
     it('whenExistingIDPass_shouldReturn_true', () => {
-        expect(wrapper.find('#email').exists()).toBe(true)
+        expect(wrapper.find('#email').exists()).toBe(true);
     });
 
     it('whenExistingIDPass_shouldReturn_true', () => {
-        expect(wrapper.find('#password').exists()).toBe(true)
+        expect(wrapper.find('#password').exists()).toBe(true);
     });
 
     it('whenExistingIDPass_shouldReturn_true', () => {
-        expect(wrapper.find('#cpassword').exists()).toBe(true)
+        expect(wrapper.find('#cpassword').exists()).toBe(true);
     });
 });
 

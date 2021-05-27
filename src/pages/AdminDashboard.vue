@@ -34,7 +34,7 @@
                       sm="6"
                       md="4"
                       class="author_name"
-                      :rules="[authorRules.required]"
+                      :rules="[authorRules.required, authorRules.regex]"
                     ></v-text-field
                   ></v-row>
                   <v-row
@@ -45,7 +45,7 @@
                       sm="6"
                       md="4"
                       class="book_title"
-                      :rules="[titleRules.required]"
+                      :rules="[titleRules.required, titleRules.regex]"
                     ></v-text-field
                   ></v-row>
                   <v-row>
@@ -104,7 +104,11 @@
 
                     <template>
                       <div class="image-to-upload">
-                        <input type="file" @change="onFileSelected" />
+                        <input
+                          type="file"
+                          @change="onFileSelected"
+                          name="image"
+                        />
                       </div>
                     </template>
                   </v-row>
@@ -322,8 +326,8 @@ export default {
           price: this.editedItem.price,
           quantity: this.editedItem.quantity,
           description: this.editedItem.description,
-          image: this.editedItem.image.name,
-          /*  image: {
+          image: this.editedItem.image,
+          /* image: {
             name: this.editedItem.image.name,
             lastModifiedDate: this.editedItem.image.lastModifiedDate,
             size: this.editedItem.image.size,
@@ -336,7 +340,7 @@ export default {
             timeout: this.timeout,
           };
           console.log("s", snackbarData);
-
+          console.log("response", result);
           console.log("t", result.data);
           //this.$refs.snackbar.setSnackbar(snackbarData);
           if (this.editedIndex > -1) {

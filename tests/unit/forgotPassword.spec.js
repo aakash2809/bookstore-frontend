@@ -23,8 +23,8 @@ describe('ForgotPassword.vue', () => {
     });
 
     it('inGivenEmail_whenImproper_shouldEvaluatefalse', () => {
-        wrapper.vm.email = "zzz@Vuetify.com";
-        expect((wrapper.vm).email).toBe("zzz@Vuetify.com");
+        wrapper.vm.email = 'zzz@Vuetify.com';
+        expect((wrapper.vm).email).toBe('zzz@Vuetify.com');
     });
 
     it('whenExistingClassNamePass_shouldReturn_true', () => {

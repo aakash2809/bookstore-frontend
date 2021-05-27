@@ -22,16 +22,16 @@ describe('ForgotPasswordForm.vue', () => {
     });
 
     it('inGivenEmail_whenImproper_shouldEvaluatefalse', () => {
-        wrapper.vm.email = "zzz@Vuetify.com";
-        expect((wrapper.vm).email).toBe("zzz@Vuetify.com")
+        wrapper.vm.email = 'zzz@Vuetify.com';
+        expect((wrapper.vm).email).toBe('zzz@Vuetify.com');
     });
 
     it('whenExistingiDPass_shouldReturn_true', () => {
-        expect(wrapper.find('#email').exists()).toBe(true)
+        expect(wrapper.find('#email').exists()).toBe(true);
     });
 
     it('whenExistingClassNamePass_shouldReturn_true', () => {
-        expect(wrapper.find('.button').exists()).toBe(true)
+        expect(wrapper.find('.button').exists()).toBe(true);
     });
 });
 
