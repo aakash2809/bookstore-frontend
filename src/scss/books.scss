@@ -96,20 +96,16 @@
     text-decoration: none;
 }
 
-.pagination {
-    list-style-type: none;
-  }
-  
-  .li {
+.li {
     display: inline-block;
   }
   
-  .active {
+.active {
     background-color: #4AAE9B;
     color: #ffffff;
-  }
+}
 
-  @media (min-width: 0){
+@media (min-width: 0){
     .flex.xs4 {
         flex-basis: 33.3333333333%;
         flex-grow: 0;
@@ -118,13 +114,11 @@
   }
 
   @media only screen and (max-width: 360px) {
-
     .book-content.v-list-item{
         min-height: 32px ;
     }
 
     .book-layout {
-   
       margin-left: 140px;
       margin-bottom: 40px;
       padding-left: 20px;   
@@ -160,7 +154,7 @@
         width:183px;
     } 
 
-     .book-content.v-list-item{
+    .book-content.v-list-item{
         min-height: 32px ;
     } 
 
@@ -198,6 +192,5 @@
         background-color: white; 
         flex: 1 1 auto;
         max-width: 100%;
-    }
-    
+    }   
 } 
