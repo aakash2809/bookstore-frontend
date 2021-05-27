@@ -32,17 +32,21 @@
     </v-main>
   </v-app>
 </template>
+
 <script>
 import SignUp from "./Register";
 import Login from "./Login";
 
 export default {
+  name: "RegistrationOrLogin",
+
   components: {
     SignUp,
     Login,
   },
 };
 </script>
+
 <style lang ="scss" scoped>
 @import "../scss/registerOrLogin.scss";
 </style>
